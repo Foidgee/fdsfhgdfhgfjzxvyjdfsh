@@ -1,0 +1,54 @@
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TextChatService = game:GetService("TextChatService")
+local player = Players.LocalPlayer
+ 
+local function sendChatMessage(msg)
+    if msg == "" then return end
+ 
+    if TextChatService.ChatVersion == Enum.ChatVersion.TextChatService then
+        local textChannels = TextChatService:FindFirstChild("TextChannels")
+        if textChannels then
+            local generalChannel = textChannels:FindFirstChild("RBXGeneral") or textChannels:FindFirstChild("General")
+            if generalChannel then
+                local success, err = pcall(function()
+                    generalChannel:SendAsync(msg)
+                end)
+                if success then return end
+                warn("Error al enviar por TextChatService:", err)
+            end
+        end
+    end
+ 
+    local chatEvents = ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
+    if chatEvents then
+        local sayMessageRequest = chatEvents:FindFirstChild("SayMessageRequest")
+        if sayMessageRequest then
+            local success, err = pcall(function()
+                sayMessageRequest:FireServer(msg, "All")
+            end)
+            if success then return end
+            warn("Error al enviar por DefaultChatSystemChatEvents:", err)
+        end
+    end
+ 
+    warn("El sistema de chat no es compatible con este script.")
+end
+ 
+local lines = {
+    "📘📘📘📘📘⬛⬛⬛📘📘⬛⬛⬛📘📘📘📘📘",
+    "📘📘📘📘📘⬛⬛⬛📘📘⬛⬛⬛📘9️⃣1️⃣1️⃣📘",
+    "📘📘📘📘📘💥⬛⬛📘📘⬛⬛⬛📘📘📘📘📘",
+    "📘📘📘📘💥💥⬛⬛📘📘⬛⬛⬛📘📘📘📘📘",
+    "📘📘📘📘🛫💥⬛⬛📘📘⬛⬛⬛📘📘📘📘📘",
+    "📘📘📘📘📘⬛⬛⬛📘📘⬛⬛⬛📘📘📘📘📘",
+    "📘📘📘📘📘⬛⬛⬛📘📘⬛⬛⬛📘📘📘📘📘"
+
+}
+
+ 
+task.wait(1)
+for _, line in ipairs(lines) do
+    sendChatMessage(line)
+    task.wait(0.4)
+end
