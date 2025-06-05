@@ -234,24 +234,6 @@ end)
         game.Debris:AddItem(msg, 5)
     end)
 
-makeButton("Rejoin on ESC", function()
-    local UserInputService = game:GetService("UserInputService")
-    local TeleportService = game:GetService("TeleportService")
-    local player = game.Players.LocalPlayer
-
-    local connection
-    connection = UserInputService.InputBegan:Connect(function(input, processed)
-        if input.KeyCode == Enum.KeyCode.Escape and not processed then
-            connection:Disconnect() -- Evita múltiples intentos
-            TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, player)
-        end
-    end)
-
-    -- Opcional: mensaje de activación
-    local msg = Instance.new("Message", workspace)
-    msg.Text = "Rejoin on ESC is now active."
-    game.Debris:AddItem(msg, 3)
-end)
 
 
 
@@ -265,13 +247,13 @@ makeButton("Particles", function()
                     -- Partículas negras corruptas
                     local corruption = Instance.new("ParticleEmitter")
                     corruption.Texture = "rbxassetid://90625492048427" -- textura oscura tipo fuego negro
-                    corruption.Rate = 100
+                    corruption.Rate = 200
                     corruption.Lifetime = NumberRange.new(2, 4)
-                    corruption.Speed = NumberRange.new(1, 6)
+                    corruption.Speed = NumberRange.new(1, 8)
                     corruption.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 2), NumberSequenceKeypoint.new(1, 0)})
                     corruption.Transparency = NumberSequence.new(0.2)
                     corruption.LightEmission = 0 -- para que se note más el decal
-                    corruption.VelocitySpread = 180
+                    corruption.VelocitySpread = 150
                     corruption.Rotation = NumberRange.new(0, 360)
                     corruption.RotSpeed = NumberRange.new(50)
                     corruption.Parent = part
