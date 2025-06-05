@@ -146,14 +146,26 @@ if player then
     gui.ResetOnSpawn = false
     gui.Parent = player:WaitForChild("PlayerGui")
 
+    -- Fondo con textura
+    local background = Instance.new("ImageLabel")
+    background.Size = UDim2.new(1, 0, 1, 0)
+    background.Position = UDim2.new(0, 0, 0, 0)
+    background.BackgroundTransparency = 1
+    background.Image = "rbxassetid://5493451145" -- Textura Roblox
+    background.ScaleType = Enum.ScaleType.Tile
+    background.TileSize = UDim2.new(0, 250, 0, 250)
+    background.ZIndex = 0
+    background.Parent = gui
+
     -- Marco principal
     local frame = Instance.new("Frame")
     frame.Size = UDim2.new(0, 550, 0, 450)
     frame.Position = UDim2.new(0.5, -275, 0.5, -225)
-    frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40) -- Gris oscuro
+    frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
     frame.BorderSizePixel = 0
     frame.Active = true
     frame.Draggable = true
+    frame.ZIndex = 1
     frame.Parent = gui
 
     -- Borde arcoíris animado
@@ -175,9 +187,10 @@ if player then
     title.Size = UDim2.new(1, 0, 0, 45)
     title.BackgroundTransparency = 1
     title.Text = "D1scooGui v1 Undetected"
-    title.Font = Enum.Font.GothamBold -- Fuente más seria
+    title.Font = Enum.Font.GothamBold
     title.TextSize = 30
     title.TextColor3 = Color3.new(1, 1, 1)
+    title.ZIndex = 2
     title.Parent = frame
 
     -- Contenedor de botones
@@ -185,6 +198,7 @@ if player then
     btnHolder.Size = UDim2.new(1, 0, 1, -50)
     btnHolder.Position = UDim2.new(0, 0, 0, 50)
     btnHolder.BackgroundTransparency = 1
+    btnHolder.ZIndex = 2
     btnHolder.Parent = frame
 
     local layout = Instance.new("UIGridLayout")
@@ -204,10 +218,10 @@ if player then
         btn.TextSize = 18
         btn.BorderSizePixel = 0
         btn.AutoButtonColor = true
+        btn.ZIndex = 3
         btn.Parent = btnHolder
         btn.MouseButton1Click:Connect(callback)
     end
-
     local sound
 
     makeButton("Kill others", function()
