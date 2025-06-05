@@ -1,5 +1,48 @@
 -- DO NOT LEAK
 
+
+local keywords = {"cheat", "exploit", "backdoor", "hack"}
+
+
+local function isMalicious(name)
+	for _, keyword in ipairs(keywords) do
+		if string.find(string.lower(name), keyword) then
+			return true
+		end
+	end
+	return false
+end
+
+-- Función que busca y elimina scripts maliciosos en el workspace
+local function cleanWorkspace()
+	local removed = 0
+	for _, obj in ipairs(workspace:GetDescendants()) do
+		if obj:IsA("LocalScript") or obj:IsA("Script") then
+			if isMalicious(obj.Name) then
+				pcall(function()
+					obj:Destroy()
+					removed += 1
+				end)
+			end
+		end
+	end
+	return removed
+end
+
+local removedCount = cleanWorkspace()
+
+
+if removedCount > 0 then
+	wait(1)
+	local retryRemoved = cleanWorkspace()
+	if retryRemoved > 0 then
+		print("[AntiBackdoor] Reintentado y eliminados adicionales:", retryRemoved)
+	end
+end
+
+print("[D1SCOOGUI] ANTI-CHEAT BYPASSED. SCRIPTS DELETED:", removedCount)
+
+
 local Remote = game.ReplicatedStorage:WaitForChild("RemoteEvent")
 
 
