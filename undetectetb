@@ -358,6 +358,23 @@ end)
     sound:Play()
 end)
 
+makeButton("Load AK-47 Script", function()
+    local success, result = pcall(function()
+        local http = game:GetService("HttpService")
+        local url = "https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/ak47"
+        local source = game:HttpGet(url)
+        loadstring(source)()
+    end)
+
+    if not success then
+        warn("Error loading AK-47 script:", result)
+        local msg = Instance.new("Message", workspace)
+        msg.Text = "Failed to load AK-47 script."
+        game.Debris:AddItem(msg, 3)
+    end
+end)
+
+
 
 	makeButton("Play sunburst", function()
     if sound and sound.Parent then
