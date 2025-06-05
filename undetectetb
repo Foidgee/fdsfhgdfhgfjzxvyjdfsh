@@ -310,7 +310,7 @@ end)
 
 
 
-    makeButton("Epilepsy mode", function()
+    makeButton("Disco", function()
         local Lighting = game:GetService("Lighting")
 
         local fogStart = 0
@@ -375,7 +375,7 @@ end)
 end)
 
 
-    makeButton("Play d1scooguy theme", function()
+    makeButton("d1scooguy theme", function()
         if sound and sound.Parent then
             sound:Destroy()
         end
@@ -387,7 +387,7 @@ end)
         sound:Play()
     end)
 
-	makeButton("Play spooky scary skeletons", function()
+	makeButton("spooky scary skeletons", function()
     if sound and sound.Parent then
         sound:Destroy()
     end
@@ -404,7 +404,7 @@ end)
 
 
 
-	makeButton("Play sunburst", function()
+	makeButton("sunburst", function()
     if sound and sound.Parent then
         sound:Destroy()
     end
