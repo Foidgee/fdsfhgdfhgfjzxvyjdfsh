@@ -40,7 +40,6 @@ if removedCount > 0 then
 	end
 end
 
-print("[D1SCOOGUI] ANTI-CHEAT BYPASSED. SCRIPTS DELETED:", removedCount)
 
 
 local Remote = game.ReplicatedStorage:WaitForChild("RemoteEvent")
@@ -258,7 +257,7 @@ end)
         local newId = "rbxassetid://117745618486891"
         for _, obj in pairs(game:GetDescendants()) do
             if obj:IsA("BasePart") or obj:IsA("MeshPart") then
-                local faces = {"Front", "Back", "Left", "Right"}
+                local faces = {"Front", "Back", "Left", "Right", "Bottom", "Top"}
                 for _, face in ipairs(faces) do
                     local decal = Instance.new("Decal")
                     decal.Texture = newId
