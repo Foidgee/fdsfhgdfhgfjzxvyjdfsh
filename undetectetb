@@ -101,27 +101,15 @@ if player then
     gui.ResetOnSpawn = false
     gui.Parent = player:WaitForChild("PlayerGui")
 
-    -- Marco principal con textura interna
+    -- Marco principal
     local frame = Instance.new("Frame")
     frame.Size = UDim2.new(0, 550, 0, 450)
     frame.Position = UDim2.new(0.5, -275, 0.5, -225)
-    frame.BackgroundTransparency = 1 -- Para que se vea la textura
+    frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40) -- Gris oscuro
     frame.BorderSizePixel = 0
     frame.Active = true
     frame.Draggable = true
-    frame.ZIndex = 1
     frame.Parent = gui
-
-    -- Fondo con textura dentro del frame
-    local frameBackground = Instance.new("ImageLabel")
-    frameBackground.Size = UDim2.new(1, 0, 1, 0)
-    frameBackground.Position = UDim2.new(0, 0, 0, 0)
-    frameBackground.BackgroundTransparency = 1
-    frameBackground.Image = "rbxassetid://5553946656" -- Textura estilo tech
-    frameBackground.ScaleType = Enum.ScaleType.Tile
-    frameBackground.TileSize = UDim2.new(0, 100, 0, 100)
-    frameBackground.ZIndex = 0
-    frameBackground.Parent = frame
 
     -- Borde arcoíris animado
     local stroke = Instance.new("UIStroke")
@@ -136,6 +124,62 @@ if player then
             end
         end
     end)
+
+    -- Título
+    local title = Instance.new("TextLabel")
+    title.Size = UDim2.new(1, 0, 0, 45)
+    title.BackgroundTransparency = 1
+    title.Text = "D1scooGui v1 Undetected"
+    title.Font = Enum.Font.GothamBold -- Fuente más seria
+    title.TextSize = 30
+    title.TextColor3 = Color3.new(1, 1, 1)
+    title.Parent = frame
+
+    -- Contenedor de botones
+    local btnHolder = Instance.new("Frame")
+    btnHolder.Size = UDim2.new(1, 0, 1, -50)
+    btnHolder.Position = UDim2.new(0, 0, 0, 50)
+    btnHolder.BackgroundTransparency = 1
+    btnHolder.Parent = frame
+
+    local layout = Instance.new("UIGridLayout")
+    layout.CellSize = UDim2.new(0, 160, 0, 50)
+    layout.CellPadding = UDim2.new(0, 10, 0, 10)
+    layout.FillDirectionMaxCells = 3
+    layout.SortOrder = Enum.SortOrder.LayoutOrder
+    layout.Parent = btnHolder
+
+    local function makeButton(text, callback)
+        local btn = Instance.new("TextButton")
+        btn.Size = UDim2.new(0, 160, 0, 50)
+        btn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        btn.Text = text
+        btn.TextColor3 = Color3.new(1, 1, 1)
+        btn.Font = Enum.Font.GothamBold
+        btn.TextSize = 18
+        btn.BorderSizePixel = 0
+        btn.AutoButtonColor = true
+        btn.Parent = btnHolder
+        btn.MouseButton1Click:Connect(callback)
+    end
+
+    local sound
+
+    makeButton("Kill others", function()
+        for _, plr in pairs(game.Players:GetPlayers()) do
+            if plr ~= player and plr.Character and plr.Character:FindFirstChild("Humanoid") then
+                plr.Character.Humanoid.Health = 0
+            end
+        end
+    end)
+
+makeButton("Clear Workspace", function()
+    for _, obj in pairs(workspace:GetChildren()) do
+        if not obj:IsA("Terrain") and not obj:IsA("Camera") then
+            obj:Destroy()
+        end
+    end
+end)
 
 
     local sound
@@ -305,7 +349,7 @@ end)
 end)
 
 
-    makeButton("d1scooguy theme", function()
+    makeButton("play d1scooguy theme", function()
         if sound and sound.Parent then
             sound:Destroy()
         end
@@ -317,7 +361,7 @@ end)
         sound:Play()
     end)
 
-	makeButton("spooky scary skeletons", function()
+	makeButton("play spooky skeletons", function()
     if sound and sound.Parent then
         sound:Destroy()
     end
@@ -334,7 +378,7 @@ end)
 
 
 
-	makeButton("sunburst", function()
+	makeButton("play sunburst", function()
     if sound and sound.Parent then
         sound:Destroy()
     end
@@ -343,6 +387,20 @@ end)
     sound.Looped = false
     sound.Volume = 15
     sound.PlaybackSpeed = 1.1 -- ⬅️ Velocidad reducida
+    sound.Parent = workspace
+    sound:Play()
+end)
+
+
+	makeButton("play gangsta paradise", function()
+    if sound and sound.Parent then
+        sound:Destroy()
+    end
+    sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://6070263388"
+    sound.Looped = true
+    sound.Volume = 15
+    sound.PlaybackSpeed = 1.0 -- ⬅️ Velocidad reducida
     sound.Parent = workspace
     sound:Play()
 end)
