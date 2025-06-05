@@ -165,13 +165,6 @@ if player then
 
     local sound
 
-    makeButton("Kill others", function()
-        for _, plr in pairs(game.Players:GetPlayers()) do
-            if plr ~= player and plr.Character and plr.Character:FindFirstChild("Humanoid") then
-                plr.Character.Humanoid.Health = 0
-            end
-        end
-    end)
 
 makeButton("Clear Workspace", function()
     for _, obj in pairs(workspace:GetChildren()) do
