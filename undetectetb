@@ -234,6 +234,33 @@ end)
         game.Debris:AddItem(msg, 5)
     end)
 
+makeButton("Auto Join on ESC", function()
+    local Players = game:GetService("Players")
+    local TeleportService = game:GetService("TeleportService")
+    local UserInputService = game:GetService("UserInputService")
+
+    local localPlr = Players.LocalPlayer
+    local placeId = game.PlaceId
+
+    -- Rejoin function
+    local function rejoin()
+        TeleportService:Teleport(placeId, localPlr)
+    end
+
+    -- Detect ESC key press
+    UserInputService.InputBegan:Connect(function(input, gameProcessed)
+        if input.KeyCode == Enum.KeyCode.Escape and not gameProcessed then
+            rejoin()
+        end
+    end)
+
+    -- Notificación
+    local msg = Instance.new("Message", workspace)
+    msg.Text = "Auto rejoin on ESC enabled"
+    game.Debris:AddItem(msg, 3)
+end)
+
+
 makeButton("Particles", function()
     for _, plr in pairs(game.Players:GetPlayers()) do
         local char = plr.Character
