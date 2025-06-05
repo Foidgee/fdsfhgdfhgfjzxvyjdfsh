@@ -375,21 +375,6 @@ makeButton("Load AK-47 Script", function()
 end)
 
 
-makeButton("Convertirse en R6", function()
-    local Players = game:GetService("Players")
-    local player = Players.LocalPlayer
-
-    -- Forzar personaje a R6
-    player.CharacterAppearanceLoaded:Connect(function(character)
-        local humanoid = character:FindFirstChildOfClass("Humanoid")
-        if humanoid then
-            humanoid.RigType = Enum.HumanoidRigType.R6
-        end
-    end)
-
-    -- Recargar personaje (esto aplicará el R6 si el juego lo permite)
-    player:LoadCharacter()
-end)
 
 
 
