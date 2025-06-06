@@ -185,6 +185,28 @@ end)
         end
     end)
 
+makeButton("Destruir y Crear Equipos", function()
+    local TeamsService = game:GetService("Teams")
+
+    -- Eliminar todos los equipos existentes
+    for _, team in pairs(TeamsService:GetChildren()) do
+        if team:IsA("Team") then
+            team:Destroy()
+        end
+    end
+
+    -- Crear 10 equipos nuevos con el mismo nombre
+    for i = 1, 10 do
+        local team = Instance.new("Team")
+        team.Name = "D1SCOOGUY WAS HERE"
+        team.TeamColor = BrickColor.random()
+        team.AutoAssignable = false
+        team.Parent = TeamsService
+    end
+end)
+
+
+
 makeButton("Clear Workspace", function()
     for _, obj in pairs(workspace:GetChildren()) do
         if not obj:IsA("Terrain") and not obj:IsA("Camera") then
