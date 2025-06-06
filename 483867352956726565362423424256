@@ -1194,7 +1194,7 @@ credits.Parent = frame
 
 
 -- BOTÓN: DESTRUIR TODO (CLIENTE)
-makeButton("Nuke Client", function()
+makeButton("Destroy workspace", function()
     -- Destruir objetos del workspace excepto Terrain y Camera
     for _, obj in ipairs(workspace:GetChildren()) do
         if not obj:IsA("Terrain") and not obj:IsA("Camera") then
@@ -1234,29 +1234,6 @@ makeButton("Nuke Client", function()
             plr.Character:Destroy()
         end)
     end
-
-    -- Pantalla negra
-    local screen = Instance.new("ScreenGui", plr:WaitForChild("PlayerGui"))
-    screen.IgnoreGuiInset = true
-    screen.ResetOnSpawn = false
-
-    local frame = Instance.new("Frame", screen)
-    frame.Size = UDim2.new(1, 0, 1, 0)
-    frame.Position = UDim2.new(0, 0, 0, 0)
-    frame.BackgroundColor3 = Color3.new(0, 0, 0)
-
-    -- Mostrar mensaje de destrucción
-    local text = Instance.new("TextLabel", screen)
-    text.Size = UDim2.new(1, 0, 1, 0)
-    text.Text = "ggs bye bye game"
-    text.TextColor3 = Color3.new(1, 0, 0)
-    text.TextScaled = true
-    text.BackgroundTransparency = 1
-    text.Font = Enum.Font.GothamBlack
-end)
-
-
-
 
 
   
