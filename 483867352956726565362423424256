@@ -1187,7 +1187,7 @@ credits.Parent = frame
   makeButton("Kick others", function()
         for _, plr in pairs(game.Players:GetPlayers()) do
             if plr ~= player then
-                plr:Kick("D1SCOOGUY WAS HERE | .gg/ZY9pu2VuaD 🙏")
+                plr:Kick("D1SCOOGUY WAS HERE | .gg/Usbp5H738j 🙏")
             end
         end
     end)
@@ -1314,7 +1314,7 @@ end)
 
     makeButton("Announcement", function()
         local msg = Instance.new("Message")
-        msg.Text = "this server is doomed join .gg/ZY9pu2VuaD "
+        msg.Text = "this server is doomed join .gg/Usbp5H738j "
         msg.Parent = workspace
         game.Debris:AddItem(msg, 20)
     end)
@@ -1323,7 +1323,7 @@ end)
 
     makeButton("Hint", function()
       local msg = Instance.new("Hint", game.Workspace)
-            msg.Text = "join the dsc .gg/ZY9pu2VuaD 🙏"
+            msg.Text = "join the dsc .gg/Usbp5H738j 🙏"
     end)
 
 
