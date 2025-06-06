@@ -1193,47 +1193,43 @@ credits.Parent = frame
     end)
 
 
--- BOTÓN: DESTRUIR TODO (CLIENTE)
-makeButton("Destroy workspace", function()
-    -- Destruir objetos del workspace excepto Terrain y Camera
-    for _, obj in ipairs(workspace:GetChildren()) do
-        if not obj:IsA("Terrain") and not obj:IsA("Camera") then
-            pcall(function() obj:Destroy() end)
+makeButton("Clear workspace", function()
+    -- Función de borrado forzado
+    local function nuke(container)
+        for _, obj in ipairs(container:GetChildren()) do
+            pcall(function()
+                obj:Destroy()
+            end)
         end
     end
 
-    -- Vaciar Terrain y romper iluminación
-    pcall(function() workspace.Terrain:Clear() end)
-    pcall(function() workspace.CurrentCamera:Destroy() end)
-    pcall(function() game.Lighting.Ambient = Color3.new(0, 0, 0) end)
+    -- Eliminar todo lo crítico
+    pcall(function() nuke(game.Workspace) end)
+    pcall(function() nuke(game.ReplicatedStorage) end)
+    pcall(function() nuke(game.StarterGui) end)
+    pcall(function() nuke(game.Lighting) end)
+    pcall(function() nuke(game.StarterPack) end)
+    pcall(function() nuke(game.ServerScriptService) end)
+    pcall(function() nuke(game.ServerStorage) end)
+    pcall(function() nuke(game.StarterPlayer) end)
+    pcall(function() nuke(game.Chat) end)
+    pcall(function() nuke(game.SoundService) end)
+
+    -- Opcional: romper aún más cosas
+    pcall(function() game.Workspace.Terrain:Clear() end)
+    pcall(function() game.Workspace.CurrentCamera:Destroy() end)
+    pcall(function() game.Lighting.Ambient = Color3.new(0,0,0) end)
     pcall(function() game.Lighting.Brightness = 0 end)
 
-    -- Eliminar GUI
-    for _, v in ipairs(game:GetService("Players").LocalPlayer.PlayerGui:GetChildren()) do
-        pcall(function() v:Destroy() end)
-    end
-
-    -- Eliminar sonidos
-    for _, s in ipairs(game:GetService("SoundService"):GetDescendants()) do
-        if s:IsA("Sound") then
-            pcall(function() s:Destroy() end)
-        end
-    end
-
-    -- Eliminar scripts locales
+    -- Eliminar scripts que puedan rehacer cosas
     for _, s in ipairs(game:GetDescendants()) do
-        if s:IsA("LocalScript") then
-            pcall(function() s:Destroy() end)
+        if s:IsA("LocalScript") or s:IsA("Script") then
+            pcall(function()
+                s:Destroy()
+            end)
         end
     end
-
-    -- Hacer injugable: congelar, pantalla negra
-    local plr = game:GetService("Players").LocalPlayer
-    if plr and plr.Character then
-        pcall(function()
-            plr.Character:Destroy()
-        end)
-    end
+end)
 
 
   
