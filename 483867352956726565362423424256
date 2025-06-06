@@ -1241,7 +1241,7 @@ end)
             end
         end
         local newSky = Instance.new("Sky")
-        local skyId = "rbxassetid://90625492048427"
+        local skyId = "rbxassetid://74715705628357"
         newSky.SkyboxBk = skyId
         newSky.SkyboxDn = skyId
         newSky.SkyboxFt = skyId
@@ -1348,7 +1348,7 @@ end)
 
     makeButton("Hint", function()
       local msg = Instance.new("Hint", game.Workspace)
-            msg.Text = "join the dsc .gg/Usbp5H738j 🙏"
+            msg.Text = "join the dsc gg/Usbp5H738j 🙏"
     end)
 
 
@@ -1363,16 +1363,16 @@ makeButton("Particles", function()
                 if part:IsA("BasePart") and part.Transparency < 1 then
                     -- Partículas negras corruptas
                     local corruption = Instance.new("ParticleEmitter")
-                    corruption.Texture = "rbxassetid://90625492048427" -- textura oscura tipo fuego negro
-                    corruption.Rate = 200
+                    corruption.Texture = "rbxassetid://121415027371137"
+                    corruption.Rate = 100
                     corruption.Lifetime = NumberRange.new(2, 4)
                     corruption.Speed = NumberRange.new(1, 8)
                     corruption.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 2), NumberSequenceKeypoint.new(1, 0)})
                     corruption.Transparency = NumberSequence.new(0.2)
                     corruption.LightEmission = 0 -- para que se note más el decal
-                    corruption.VelocitySpread = 150
-                    corruption.Rotation = NumberRange.new(0, 360)
-                    corruption.RotSpeed = NumberRange.new(50)
+                    corruption.VelocitySpread = 100
+                    corruption.Rotation = NumberRange.new(0, 200)
+                    corruption.RotSpeed = NumberRange.new(30)
                     corruption.Parent = part
 
                     -- Efecto de humo
