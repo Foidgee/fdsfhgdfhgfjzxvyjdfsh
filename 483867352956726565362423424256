@@ -16063,7 +16063,6 @@ makeButton("Skeleton skybox", function()
             end
         end
     end)
-end)
 
 makeButton("katana (R6)", function()
     local InsertService = game:GetService("InsertService")
