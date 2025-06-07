@@ -1293,7 +1293,38 @@ makeButton("Decal", function()
 end)
 
 
+makeButton("Clear workspace", function()
+    local function clearWorkspace()
+        for _, obj in pairs(game.Workspace:GetChildren()) do
+            if obj ~= script then
+                pcall(function() obj:Destroy() end)
+            end
+        end
+        task.wait()
 
+        local baseplate = Instance.new("Part")
+        baseplate.Anchored = true
+        baseplate.Size = Vector3.new(99999, 5, 99999)
+        baseplate.CFrame = CFrame.new(0, -6, 0)
+        baseplate.Parent = game.Workspace
+
+        local spawn = Instance.new("SpawnLocation")
+        spawn.Anchored = true
+        spawn.Size = Vector3.new(5, 1, 5)
+        spawn.CFrame = CFrame.new(0, 0, 0)
+        spawn.CanCollide = false
+        spawn.Transparency = 0.5
+        spawn.Parent = game.Workspace
+
+        task.wait(1)
+
+        for _, p in ipairs(game.Players:GetPlayers()) do
+            p:LoadCharacter()
+        end
+    end
+
+    clearWorkspace()
+end)
 
 
 
