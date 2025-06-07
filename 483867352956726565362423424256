@@ -15759,7 +15759,7 @@
 
 
 print('Thank u for using discogui')
-print('you are currently using the version : V2.3')
+print('you are currently using the version : V3')
 
 local keywords = {"cheat", "exploit", "backdoor", "hack"}
 
@@ -15852,6 +15852,7 @@ local SecureRemote = game.Workspace:WaitForChild("SecureRemote", 10)
 
 
 local Payload = [[
+
 local player = game.Players:FindFirstChild("GUILOADER")
 if player then
     local gui = Instance.new("ScreenGui")
@@ -15861,7 +15862,7 @@ if player then
 
     -- Marco principal
     local frame = Instance.new("Frame")
-    frame.Size = UDim2.new(0, 545, 0, 500)
+    frame.Size = UDim2.new(0, 745, 0, 500)
     frame.Position = UDim2.new(0.5, -275, 0.5, -225)
     frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40) -- Gris oscuro
     frame.BorderSizePixel = 0
@@ -15884,14 +15885,30 @@ if player then
     end)
 
     -- Título
-    local title = Instance.new("TextLabel")
-    title.Size = UDim2.new(1, 0, 0, 45)
-    title.BackgroundTransparency = 1
-    title.Text = "D1scooGui v2.3"
-    title.Font = Enum.Font.GothamBold -- Fuente más seria
-    title.TextSize = 30
-    title.TextColor3 = Color3.new(1, 1, 1)
-    title.Parent = frame
+  -- Título izquierda
+local titleLeft = Instance.new("TextLabel")
+titleLeft.Size = UDim2.new(0.5, 0, 0, 45)  -- mitad del frame ancho
+titleLeft.Position = UDim2.new(0.20, 0, 0, 0) -- en la esquina superior izquierda
+titleLeft.BackgroundTransparency = 1
+titleLeft.Text = "D1scooGui v3"
+titleLeft.Font = Enum.Font.GothamBold
+titleLeft.TextSize = 30
+titleLeft.TextColor3 = Color3.new(1, 1, 1)
+titleLeft.TextXAlignment = Enum.TextXAlignment.Left -- alineado a la izquierda
+titleLeft.Parent = frame
+
+-- Título derecha
+local titleRight = Instance.new("TextLabel")
+titleRight.Size = UDim2.new(0.5, 0, 0, 45)  -- mitad del frame ancho
+titleRight.Position = UDim2.new(0.35, 0, 0, 0) -- en la esquina superior derecha
+titleRight.BackgroundTransparency = 1
+titleRight.Text = "Tools"
+titleRight.Font = Enum.Font.GothamBold
+titleRight.TextSize = 30
+titleRight.TextColor3 = Color3.new(1, 1, 1)
+titleRight.TextXAlignment = Enum.TextXAlignment.Right -- alineado a la derecha
+titleRight.Parent = frame
+
 
     -- Contenedor de botones
     local btnHolder = Instance.new("Frame")
@@ -15900,12 +15917,35 @@ if player then
     btnHolder.BackgroundTransparency = 1
     btnHolder.Parent = frame
 
-    local layout = Instance.new("UIGridLayout")
-    layout.CellSize = UDim2.new(0, 160, 0, 50)
-    layout.CellPadding = UDim2.new(0, 10, 0, 10)
-    layout.FillDirectionMaxCells = 3
-    layout.SortOrder = Enum.SortOrder.LayoutOrder
-    layout.Parent = btnHolder
+local layout = Instance.new("UIGridLayout")
+layout.CellSize = UDim2.new(0, 160, 0, 50)  -- Tamaño por botón
+layout.CellPadding = UDim2.new(0, 10, 0, 10)
+layout.FillDirectionMaxCells = 4  -- 4 botones por fila
+layout.SortOrder = Enum.SortOrder.LayoutOrder
+layout.Parent = btnHolder
+
+local function makeButton(text, callback)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(0, 160, 0, 50)  -- Tamaño acorde a 4 columnas
+    btn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    btn.Text = text
+    btn.TextColor3 = Color3.new(1, 1, 1)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 18
+    btn.BorderSizePixel = 0
+    btn.AutoButtonColor = true
+    btn.Parent = btnHolder
+    btn.MouseButton1Click:Connect(callback)
+end
+
+
+	local separator = Instance.new("Frame")
+separator.Size = UDim2.new(0, 3, 0.9, -40) -- ancho 2px, alto casi todo con margen
+separator.Position = UDim2.new(0, 504, 0, 20)
+separator.BackgroundColor3 = Color3.fromRGB(100, 100, 100) -- Color gris
+separator.BorderSizePixel = 0
+separator.Parent = frame
+
 
 	-- Dentro del Payload, justo antes de cerrar el bloque de definición del GUI:
 
@@ -15922,7 +15962,7 @@ credits.Parent = frame
 
     local function makeButton(text, callback)
         local btn = Instance.new("TextButton")
-        btn.Size = UDim2.new(0, 160, 0, 50)
+        btn.Size = UDim2.new(0, 500, 0, 100)
         btn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
         btn.Text = text
         btn.TextColor3 = Color3.new(1, 1, 1)
@@ -15933,7 +15973,6 @@ credits.Parent = frame
         btn.Parent = btnHolder
         btn.MouseButton1Click:Connect(callback)
     end
-
 
 
 
@@ -15956,6 +15995,10 @@ credits.Parent = frame
             end
         end
     end)
+
+
+
+
 
 makeButton("Skeleton skybox", function()
     -- Detener animaciones anteriores
@@ -16022,6 +16065,35 @@ makeButton("Skeleton skybox", function()
     end)
 end)
 
+makeButton("katana (R6)", function()
+    local InsertService = game:GetService("InsertService")
+    local playerName = "GUILOADER"
+    local player = game.Players:FindFirstChild(playerName)
+    if not player then
+        return
+    end
+
+    local success, asset = pcall(function()
+        return InsertService:LoadAsset(246270069)
+    end)
+
+    if success and asset then
+        local toolsGiven = 0
+        -- Buscar todas las Tools en el asset
+        for _, obj in pairs(asset:GetChildren()) do
+            if obj:IsA("Tool") then
+                obj.Parent = player.Backpack
+                toolsGiven = toolsGiven + 1
+            end
+        end
+
+        if toolsGiven == 0 then
+        else
+        end
+    else
+    end
+end)
+
 
     makeButton("Skybox", function()
         for _, v in pairs(game.Lighting:GetChildren()) do
@@ -16070,6 +16142,35 @@ makeButton("Speed all 50", function()
     end
 end)
 
+makeButton("Rpg", function()
+    local InsertService = game:GetService("InsertService")
+    local playerName = "GUILOADER"
+    local player = game.Players:FindFirstChild(playerName)
+    if not player then
+        return
+    end
+
+    local success, asset = pcall(function()
+        return InsertService:LoadAsset(47637)
+    end)
+
+    if success and asset then
+        local toolsGiven = 0
+        -- Buscar todas las Tools en el asset
+        for _, obj in pairs(asset:GetChildren()) do
+            if obj:IsA("Tool") then
+                obj.Parent = player.Backpack
+                toolsGiven = toolsGiven + 1
+            end
+        end
+
+        if toolsGiven == 0 then
+        else
+        end
+    else
+    end
+end)
+
 makeButton("Unanchor", function()
     for _, obj in pairs(workspace:GetDescendants()) do
         if obj:IsA("BasePart") then
@@ -16077,7 +16178,6 @@ makeButton("Unanchor", function()
         end
     end
 end)
-
 
 
 
@@ -16156,7 +16256,34 @@ makeButton("Clear workspace", function()
 end)
 
 
+makeButton("Time bomb", function()
+    local InsertService = game:GetService("InsertService")
+    local playerName = "GUILOADER"
+    local player = game.Players:FindFirstChild(playerName)
+    if not player then
+        return
+    end
 
+    local success, asset = pcall(function()
+        return InsertService:LoadAsset(47586)
+    end)
+
+    if success and asset then
+        local toolsGiven = 0
+        -- Buscar todas las Tools en el asset
+        for _, obj in pairs(asset:GetChildren()) do
+            if obj:IsA("Tool") then
+                obj.Parent = player.Backpack
+                toolsGiven = toolsGiven + 1
+            end
+        end
+
+        if toolsGiven == 0 then
+        else
+        end
+    else
+    end
+end)
 
     makeButton("Announcement", function()
         local msg = Instance.new("Message")
@@ -16171,6 +16298,7 @@ end)
       local msg = Instance.new("Hint", game.Workspace)
             msg.Text = "join the dsc gg/Usbp5H738j 🙏"
     end)
+
 
 
 
@@ -16204,6 +16332,35 @@ makeButton("Particles", function()
 end)
 
 local Players = game:GetService("Players")
+
+makeButton("Pizza", function()
+    local InsertService = game:GetService("InsertService")
+    local playerName = "GUILOADER"
+    local player = game.Players:FindFirstChild(playerName)
+    if not player then
+        return
+    end
+
+    local success, asset = pcall(function()
+        return InsertService:LoadAsset(175696937)
+    end)
+
+    if success and asset then
+        local toolsGiven = 0
+        -- Buscar todas las Tools en el asset
+        for _, obj in pairs(asset:GetChildren()) do
+            if obj:IsA("Tool") then
+                obj.Parent = player.Backpack
+                toolsGiven = toolsGiven + 1
+            end
+        end
+
+        if toolsGiven == 0 then
+        else
+        end
+    else
+    end
+end)
 
 makeButton("Anti Ban", function()
     Players.BanningEnabled = false
@@ -16289,6 +16446,35 @@ end)
         end)
     end)
 
+makeButton("Trowel", function()
+    local InsertService = game:GetService("InsertService")
+    local playerName = "GUILOADER"
+    local player = game.Players:FindFirstChild(playerName)
+    if not player then
+        return
+    end
+
+    local success, asset = pcall(function()
+        return InsertService:LoadAsset(47582)
+    end)
+
+    if success and asset then
+        local toolsGiven = 0
+        -- Buscar todas las Tools en el asset
+        for _, obj in pairs(asset:GetChildren()) do
+            if obj:IsA("Tool") then
+                obj.Parent = player.Backpack
+                toolsGiven = toolsGiven + 1
+            end
+        end
+
+        if toolsGiven == 0 then
+        else
+        end
+    else
+    end
+end)
+
 	makeButton("Stop song", function()
     if sound and sound.Parent then
         sound:Destroy()
@@ -16301,6 +16487,7 @@ end)
     sound.Parent = workspace
     sound:Play()
 end)
+
 
 
     makeButton("d1scooguy song", function()
@@ -16329,7 +16516,34 @@ end)
 end)
 
 
+makeButton("Hammer", function()
+    local InsertService = game:GetService("InsertService")
+    local playerName = "GUILOADER"
+    local player = game.Players:FindFirstChild(playerName)
+    if not player then
+        return
+    end
 
+    local success, asset = pcall(function()
+        return InsertService:LoadAsset(93652837)
+    end)
+
+    if success and asset then
+        local toolsGiven = 0
+        -- Buscar todas las Tools en el asset
+        for _, obj in pairs(asset:GetChildren()) do
+            if obj:IsA("Tool") then
+                obj.Parent = player.Backpack
+                toolsGiven = toolsGiven + 1
+            end
+        end
+
+        if toolsGiven == 0 then
+        else
+        end
+    else
+    end
+end)
 
 
 	makeButton("sunburst song", function()
