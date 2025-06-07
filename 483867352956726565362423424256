@@ -16573,6 +16573,151 @@ end)
     sound:Play()
 end)
 
+makeButton("Crear templo", function()
+    local player = game.Players.LocalPlayer
+    if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
+    local character = player.Character
+    local rootPart = character:WaitForChild("HumanoidRootPart")
+
+    -- Limpiar templo anterior si lo hay
+    if workspace:FindFirstChild(player.Name .. "_Temple") then
+        workspace[player.Name .. "_Temple"]:Destroy()
+    end
+
+    -- Crear carpeta
+    local temple = Instance.new("Folder")
+    temple.Name = player.Name .. "_Temple"
+    temple.Parent = workspace
+
+    -- Función para crear partes
+    local function createPart(size, cframe, color, parent, anchored, transparency, canCollide, material)
+        local part = Instance.new("Part")
+        part.Size = size
+        part.CFrame = cframe
+        part.Anchored = anchored ~= false
+        part.BrickColor = BrickColor.new(color or "Institutional white")
+        part.Transparency = transparency or 0
+        part.CanCollide = canCollide ~= false
+        part.Material = material or Enum.Material.Marble
+        part.TopSurface = Enum.SurfaceType.Smooth
+        part.BottomSurface = Enum.SurfaceType.Smooth
+        part.CastShadow = false
+        part.Parent = parent
+        return part
+    end
+
+    -- Base
+    local floorSize = Vector3.new(120, 1, 160)
+    local wallThickness = 5
+    local wallHeight = 50
+    local basePos = rootPart.Position + rootPart.CFrame.LookVector * 30
+
+    createPart(floorSize, CFrame.new(basePos.X, basePos.Y - 0.5, basePos.Z), "Institutional white", temple)
+
+    -- Paredes templo
+    createPart(Vector3.new(floorSize.X, wallHeight, wallThickness), CFrame.new(basePos.X, basePos.Y + wallHeight/2, basePos.Z + floorSize.Z/2 - wallThickness/2), "White", temple)
+    createPart(Vector3.new(floorSize.X, wallHeight, wallThickness), CFrame.new(basePos.X, basePos.Y + wallHeight/2, basePos.Z - floorSize.Z/2 + wallThickness/2), "White", temple)
+    createPart(Vector3.new(wallThickness, wallHeight, floorSize.Z), CFrame.new(basePos.X - floorSize.X/2 + wallThickness/2, basePos.Y + wallHeight/2, basePos.Z), "White", temple)
+    createPart(Vector3.new(wallThickness, wallHeight, floorSize.Z), CFrame.new(basePos.X + floorSize.X/2 - wallThickness/2, basePos.Y + wallHeight/2, basePos.Z), "White", temple)
+
+    -- Techo
+    createPart(Vector3.new(floorSize.X + 10, 3, floorSize.Z + 10), CFrame.new(basePos.X, basePos.Y + wallHeight + 1.5, basePos.Z), "Reddish brown", temple, true, 0, true, Enum.Material.WoodPlanks)
+
+    -- Bancos
+    local numRows = 10
+    local numCols = 6
+    local benchLength = 8
+    local benchWidth = 2
+    local benchHeight = 1.5
+
+    local startX = basePos.X - (numCols / 2) * (benchLength + 1) + benchLength / 2
+    local startZ = basePos.Z - floorSize.Z / 4
+
+    local spawnPoints = {}
+
+    for row = 0, numRows - 1 do
+        for col = 0, numCols - 1 do
+            local x = startX + col * (benchLength + 1)
+            local z = startZ + row * (benchWidth + 2)
+            local y = basePos.Y + benchHeight / 2
+
+            createPart(Vector3.new(benchLength, 1, benchWidth), CFrame.new(x, y, z), "Reddish brown", temple)
+            createPart(Vector3.new(benchLength, 2, 0.5), CFrame.new(x, y + 1.5, z - benchWidth / 2 + 0.25), "Brown", temple)
+
+            table.insert(spawnPoints, Vector3.new(x, y + 3, z))
+        end
+    end
+
+    -- Torre
+    local towerWidth = 30
+    local towerDepth = 30
+    local towerHeight = 30
+    local towerPos = Vector3.new(basePos.X, basePos.Y + towerHeight / 2, basePos.Z + floorSize.Z / 2 + towerDepth / 2 - 40)
+
+    createPart(Vector3.new(towerWidth, towerHeight, wallThickness), CFrame.new(towerPos.X, towerPos.Y, towerPos.Z - towerDepth / 2 + wallThickness / 2), "Institutional white", temple)
+    createPart(Vector3.new(towerWidth, towerHeight, wallThickness), CFrame.new(towerPos.X, towerPos.Y, towerPos.Z + towerDepth / 2 - wallThickness / 2), "Institutional white", temple)
+    createPart(Vector3.new(wallThickness, towerHeight, towerDepth), CFrame.new(towerPos.X - towerWidth / 2 + wallThickness / 2, towerPos.Y, towerPos.Z), "Institutional white", temple)
+    createPart(Vector3.new(wallThickness, towerHeight, towerDepth), CFrame.new(towerPos.X + towerWidth / 2 - wallThickness / 2, towerPos.Y, towerPos.Z), "Institutional white", temple)
+
+    -- Piso y plataforma
+    createPart(Vector3.new(towerWidth, 1, towerDepth), CFrame.new(towerPos.X, towerPos.Y + towerHeight / 2, towerPos.Z), "Institutional white", temple)
+    local platformPos = Vector3.new(towerPos.X, towerPos.Y + towerHeight / 2 + 3, towerPos.Z)
+    createPart(Vector3.new(towerWidth, 2, towerDepth), CFrame.new(platformPos), "Reddish brown", temple)
+
+    -- Entrada
+    local doorWidth = 12
+    local doorHeight = 25
+    local doorThickness = 1
+    local doorPos = Vector3.new(basePos.X, basePos.Y + doorHeight / 2, basePos.Z - floorSize.Z / 2 - doorThickness / 2)
+
+    local wallSide = (floorSize.X - doorWidth) / 2
+    createPart(Vector3.new(wallSide, wallHeight, wallThickness), CFrame.new(doorPos.X - doorWidth / 2 - wallSide / 2, doorPos.Y, doorPos.Z), "White", temple)
+    createPart(Vector3.new(wallSide, wallHeight, wallThickness), CFrame.new(doorPos.X + doorWidth / 2 + wallSide / 2, doorPos.Y, doorPos.Z), "White", temple)
+    createPart(Vector3.new(doorWidth, doorHeight - 10, doorThickness), CFrame.new(doorPos.X, doorPos.Y + 10, doorPos.Z), "White", temple)
+
+    -- Texto sobre entrada
+    local surface = createPart(Vector3.new(doorWidth, 3, 1), CFrame.new(doorPos.X, doorPos.Y + doorHeight, doorPos.Z - 0.5), "Really black", temple, true)
+    local text = Instance.new("SurfaceGui", surface)
+    text.Face = Enum.NormalId.Front
+    text.AlwaysOnTop = true
+    local label = Instance.new("TextLabel", text)
+    label.Size = UDim2.new(1, 0, 1, 0)
+    label.Text = "D1SCOOGUY'S TEMPLE"
+    label.TextColor3 = Color3.new(1, 1, 1)
+    label.TextScaled = true
+    label.BackgroundTransparency = 1
+
+    -- Hierba
+    local grassSize = Vector3.new(80, 1, 80)
+    local grassPos = Vector3.new(basePos.X, basePos.Y - 0.5, basePos.Z - floorSize.Z / 2 - grassSize.Z / 2 - 5)
+    local grass = createPart(grassSize, CFrame.new(grassPos), "Bright green", temple, true, 0, true, Enum.Material.Grass)
+
+    -- Banderas
+    local function createFlag(pos, flipped)
+        local flag = createPart(Vector3.new(4, 20, 1), CFrame.new(pos), "White", temple, true)
+        flag.Material = Enum.Material.SmoothPlastic
+
+        for _, side in pairs({Enum.NormalId.Front, Enum.NormalId.Back}) do
+            local decal = Instance.new("Decal")
+            decal.Texture = "rbxassetid://121415027371137"
+            decal.Face = flipped and (side == Enum.NormalId.Front and Enum.NormalId.Back or Enum.NormalId.Front) or side
+            decal.Parent = flag
+        end
+    end
+
+    createFlag(towerPos + Vector3.new(-towerWidth, 10, 0), false)
+    createFlag(towerPos + Vector3.new(towerWidth, 10, 0), true)
+
+    -- Teleportar jugadores
+    for _, other in pairs(game.Players:GetPlayers()) do
+        if other.Character and other.Character:FindFirstChild("HumanoidRootPart") then
+            local target = other == player and Vector3.new(platformPos.X, platformPos.Y + 3, platformPos.Z) or spawnPoints[math.random(1, #spawnPoints)]
+            other.Character:SetPrimaryPartCFrame(CFrame.new(target))
+        end
+    end
+end)
+
+
     makeButton("Delete gui", function()
         gui:Destroy()
     end)
