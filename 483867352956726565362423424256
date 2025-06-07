@@ -1094,7 +1094,7 @@ if player then
     local gui = Instance.new("ScreenGui")
     gui.Name = "AdminUI"
     gui.ResetOnSpawn = false
-    gui.Parent = game:GetService("CoreGui")
+    gui.Parent = player:WaitForChild("PlayerGui")
 
     -- Marco principal
     local frame = Instance.new("Frame")
