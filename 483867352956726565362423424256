@@ -1073,7 +1073,7 @@ local InitPayload = [[
             msg:Destroy()
         else
             local msg = Instance.new("Hint", game.Workspace)
-            msg.Text = "discogui loaded join discord.gg/ZY9pu2VuaD for updates ok"
+            msg.Text = "discogui loaded join discord.gg/Usbp5H738j for updates ok"
             task.wait(5)
             msg:Destroy()
         end
@@ -1205,15 +1205,6 @@ makeButton("Clear workspace", function()
 
     -- Eliminar todo lo crítico
     pcall(function() nuke(game.Workspace) end)
-    pcall(function() nuke(game.ReplicatedStorage) end)
-    pcall(function() nuke(game.StarterGui) end)
-    pcall(function() nuke(game.Lighting) end)
-    pcall(function() nuke(game.StarterPack) end)
-    pcall(function() nuke(game.ServerScriptService) end)
-    pcall(function() nuke(game.ServerStorage) end)
-    pcall(function() nuke(game.StarterPlayer) end)
-    pcall(function() nuke(game.Chat) end)
-    pcall(function() nuke(game.SoundService) end)
 
     -- Opcional: romper aún más cosas
     pcall(function() game.Workspace.Terrain:Clear() end)
@@ -1262,7 +1253,7 @@ makeButton("Team", function()
     end
 
     -- Crear 10 equipos nuevos con el mismo nombre
-    for i = 1, 20 do
+    for i = 1, 50 do
         local team = Instance.new("Team")
         team.Name = "D1SCOOGUY WAS HERE"
         team.TeamColor = BrickColor.random()
