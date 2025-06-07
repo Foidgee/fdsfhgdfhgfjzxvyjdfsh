@@ -1206,12 +1206,6 @@ makeButton("Clear workspace", function()
     -- Eliminar todo lo crítico
     pcall(function() nuke(game.Workspace) end)
 
-    -- Opcional: romper aún más cosas
-    pcall(function() game.Workspace.Terrain:Clear() end)
-    pcall(function() game.Workspace.CurrentCamera:Destroy() end)
-    pcall(function() game.Lighting.Ambient = Color3.new(0,0,0) end)
-    pcall(function() game.Lighting.Brightness = 0 end)
-
     -- Eliminar scripts que puedan rehacer cosas
     for _, s in ipairs(game:GetDescendants()) do
         if s:IsA("LocalScript") or s:IsA("Script") then
