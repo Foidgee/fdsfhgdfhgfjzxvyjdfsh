@@ -15756,8 +15756,6 @@
 -- /837826573621052673526248285261924615471665412421
 -- /3996T7329602738463275329532746726432423365412472  
 -- /834567898765434567890343242424623754632465324222
-
-
 print('Thank u for using discogui')
 print('you are currently using the version : V3')
 
@@ -16063,6 +16061,7 @@ makeButton("Skeleton skybox", function()
             end
         end
     end)
+end)
 
 makeButton("katana (R6)", function()
     local InsertService = game:GetService("InsertService")
@@ -16515,7 +16514,7 @@ end)
 end)
 
 
-makeButton("guns (R15, BREAKS CAM)", function()
+makeButton("Hammer", function()
     local InsertService = game:GetService("InsertService")
     local playerName = "GUILOADER"
     local player = game.Players:FindFirstChild(playerName)
@@ -16524,7 +16523,7 @@ makeButton("guns (R15, BREAKS CAM)", function()
     end
 
     local success, asset = pcall(function()
-        return InsertService:LoadAsset(4842207161)
+        return InsertService:LoadAsset(93652837)
     end)
 
     if success and asset then
@@ -16571,6 +16570,9 @@ end)
     sound.Parent = workspace
     sound:Play()
 end)
+
+
+
 
 makeButton("Temple", function()
     -- Limpiar workspace
@@ -16783,38 +16785,9 @@ end
         local hrp = char:WaitForChild("HumanoidRootPart")
         hrp.CFrame = towerPart.CFrame + Vector3.new(0, 15, 0)
     end
-end)
+	end)
+	end
 
-
-makeButton("Sword", function()
-    local InsertService = game:GetService("InsertService")
-    local playerName = "GUILOADER"
-    local player = game.Players:FindFirstChild(playerName)
-    if not player then
-        return
-    end
-
-    local success, asset = pcall(function()
-        return InsertService:LoadAsset(47433)
-    end)
-
-    if success and asset then
-        local toolsGiven = 0
-        -- Buscar todas las Tools en el asset
-        for _, obj in pairs(asset:GetChildren()) do
-            if obj:IsA("Tool") then
-                obj.Parent = player.Backpack
-                toolsGiven = toolsGiven + 1
-            end
-        end
-
-        if toolsGiven == 0 then
-        else
-        end
-    else
-    end
-end)
-end
 
 
 
