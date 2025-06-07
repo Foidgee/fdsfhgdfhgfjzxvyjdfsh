@@ -995,6 +995,8 @@
 -- /3996T7329602738463275329532746726432423365412472  
 -- /834567898765434567890343242424623754632465324222
 
+print('Thank u for using discogui')
+print('you are currently using the version : V2')
 
 local keywords = {"cheat", "exploit", "backdoor", "hack"}
 
