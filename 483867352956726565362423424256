@@ -16514,7 +16514,7 @@ end)
 end)
 
 
-makeButton("Hammer", function()
+makeButton("Sword", function()
     local InsertService = game:GetService("InsertService")
     local playerName = "GUILOADER"
     local player = game.Players:FindFirstChild(playerName)
@@ -16523,7 +16523,7 @@ makeButton("Hammer", function()
     end
 
     local success, asset = pcall(function()
-        return InsertService:LoadAsset(93652837)
+        return InsertService:LoadAsset(47433)
     end)
 
     if success and asset then
@@ -16655,7 +16655,7 @@ makeButton("Temple", function()
     entranceText.Parent = leftBack
 
     local label = Instance.new("TextLabel")
-    label.Text = "Welcome to the d1scooguy's temple, created under the guidance of d1scooguy, who we honor as a godly presence watching over us. This temple is a symbol of faith, respect, and unity. We believe that God's light shines through all beings, and here, all religions and beliefs are embraced with love and acceptance. No matter your path, you are welcome, for we respect the divine spark within everyone. May this temple inspire peace, kindness, and reflection. Remember that in honoring each other, we honor the divine spirit embodied by d1scooguy and all of creation."
+    label.Text = "Welcome to the d1scooguy's temple, created under the guidance of d1scooguy, who we honor as a godly presence watching over us. This temple is a symbol of faith, respect, and unity. We believe that God's light shines through all beings, and here, all religions and beliefs are embraced with love and acceptance. No matter your path, you are welcome, for we respect the divine spark within everyone. May this temple inspire peace, kindness, and reflection. gg/Usbp5H738j"
     label.Size = UDim2.new(1, 0, 1, 0)
     label.BackgroundTransparency = 1
     label.TextColor3 = Color3.new(0, 0, 0)
