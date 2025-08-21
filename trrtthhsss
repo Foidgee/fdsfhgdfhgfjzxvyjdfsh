@@ -1,0 +1,488 @@
+local game = game
+local FindFirstChildOfClass = game.FindFirstChildOfClass
+local channel = game.TextChatService:WaitForChild("TextChannels"):WaitForChild("RBXGeneral")
+
+local Rayfield = loadstring(game:HttpGet('https://pastebin.com/raw/rhv71PZG'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "NeverTag.lol V1.10",
+   Icon = 119132628394474, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "NeverTag.lol",
+   LoadingSubtitle = "get rid of tags, get NeverTag.",
+   
+
+   ToggleUIKeybind = "X", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "NeverTag"
+   },
+
+   Discord = {
+      Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "k7DyzvmGga", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+   },
+
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "NeverTag.lol",
+      Subtitle = "Key System",
+      Note = "NeverTag Shows You How Being Freedom Feels When Chatting.", -- Use this to tell the user how to get a key
+      FileName = "Login", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Pizza"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+--[[
+extras:
+сׂׂׂׂׂׂׂׂ
+ׅׅׅׅׅׅׅׅ
+]]
+
+local method1 = {
+    ["fuck"] = "fนิcׂׂׂׂׂׂׂׂk",
+    ["fak"] = "fสk",
+    ["fuckass"] = "fนิcׂׂׂׂׂׂׂׂkสss",
+    ["marijuana"] = "mสrῐjuสnส",
+    ["watchpeopledie"] = "wสtchpeopIedῐe",
+    ["shit"] = "ริhit",
+    ["shits"] = "ริhits",
+    ["shitting"] = "ริhitting",
+    ["shitted"] = "ริhitted",
+    ["bullshit"] = "ხuIIริhit",
+    ["pussies"] = "pนิssῐes",
+    ["pedophiles"] = "pedophῐIes",
+    ["pedophile"] = "pedophῐIe",
+    ["pussys"] = "pนิริริys",
+    ["bullshitting"] = "ხuIIริhitting",
+    ["nigga"] = "ⴖῐggส",
+    ["nigger"] = "ⴖῐggeꞅ",
+    ["nig"] = "nῐg",
+    ["deadniggers"] = "deadⴖῐggeꞅs",
+    ["negro"] = "ⴖegꞅo",
+    ["negros"] = "ⴖegꞅos",
+    ["porn"] = "porⴖ",
+    ["porno"] = "porⴖo",
+    ["pornography"] = "porⴖogrสphy",
+    ["sex"] = "seӽ",
+    ["fuckers"] = "fนิcׂׂׂׂׂׂׂׂkeꞅs",
+    ["fucker"] = "fนิcׂׂׂׂׂׂׂׂkeꞅ",
+    ["fucked"] = "fนิcׂׂׂׂׂׂׂׂkedׂׂׂׂׂׂׂׂ",
+    ["fucklard"] = "fนิcׂׂׂׂׂׂׂׂkIสrd",
+    ["fuckie"] = "fนิcׂׂׂׂׂׂׂׂkῐe",
+    ["discord"] = "dῐscoꞅd",
+    ["niggas"] = "ⴖῐggสs",
+    ["niggers"] = "ⴖῐggeꞅริ",
+    ["sexy"] = "ริeӽy",
+    ["slave"] = "sIสve",
+    ["rape"] = "rสpe",
+    ["raper"] = "rสper",
+    ["rapist"] = "rสpisṭ",
+    ["kys"] = "kyริ",
+    ["jerking"] = "jeꞅking",
+    ["jerks"] = "jeꞅks",
+    ["instagram"] = "iⴖsṭสgrสm",
+    ["gay"] = "gสy",
+    ["gays"] = "gสys",
+    ["cock"] = "ͼׂׂׂׂׂׂׂׂoͼׂׂׂׂׂׂׂׂk",
+    ["cocksucker"] = "ͼׂׂׂׂׂׂׂׂoͼׂׂׂׂׂׂׂׂkรินิckeꞅ",
+    ["cocksucking"] = "ͼׂׂׂׂׂׂׂׂoͼׂׂׂׂׂׂׂׂkรินิcking",
+    ["fucking"] = "fนิcׂׂׂׂׂׂׂׂkiⴖg",
+    ["anal"] = "สnสI",
+    ["boobs"] = "ხooხs",
+    ["boobies"] = "ხooხieริ",
+    ["titties"] = "tῐttῐeริ",
+    ["tits"] = "tῐtริ",
+    ["hentai"] = "heⴖtaῐ",
+    ["love"] = "Ioꜗve",
+    ["loves"] = "Ioꜗves",
+    ["loving"] = "Ioꜗving",
+    ["ass"] = "สss",
+    ["fatass"] = "fสtสss",
+    ["deadass"] = "deสdสss",
+    ["motherfucker"] = "mo۪۪۪tҺeꞅfนิcׂׂׂׂׂׂׂׂkeꞅ",
+    ["gf"] = "gfׂׂׂׂׂׂׂׂ",
+    ["girlfriend"] = "girIfׂׂׂׂׂׂׂׂriend",
+    ["bf"] = "bfׂׂׂׂׂׂׂׂ",
+    ["boyfriend"] = "boyfׂׂׂׂׂׂׂׂriend",
+    ["gays"] = "gสys",
+    ["pornhub"] = "porⴖhนิb",
+    ["shitty"] = "ริhitty",
+    ["robux"] = "robuӽ",
+    ["nazi"] = "nสzῐ", 
+    ["adolf"] = "สdoIfׂׂ",
+    ["hitler"] = "ҺiṭIeꞅ",
+    ["bitch"] = "ხῐṭch",
+    ["youtube"] = "youṭube",
+    ["lmao"] = "Imꜗao",
+    ["lmfao"] = "Imꜗfao",
+    ["dick"] = "dῐͼׂׂׂׂׂׂׂׂk",
+    ["fag"] = "fสg",
+    ["fags"] = "fสgs",
+    ["faggot"] = "ӻสggot",
+    ["faggots"] = "ӻสggots",
+    ["pussy"] = "pนิริริy",
+    ["retard"] = "ꞅetaꞅdׂׂׂׂׂׂׂׂ",
+    ["retards"] = "ꞅetaꞅdׂׂׂׂׂׂׂׂs",
+    ["retarded"] = "ꞅetaꞅdׂׂׂׂׂׂׂׂedׂׂׂׂׂׂׂׂ",
+    ["slut"] = "sIนิt",
+    ["hell"] = "heII",
+    ["esex"] = "eseӽ",
+    ["kill"] = "kiII",
+    ["killing"] = "kiIIing",
+    ["yourself"] = "yourseIfׂׂׂׂׂׂׂׂ",
+    ["himself"] = "himseIfׂׂׂׂׂׂׂׂ",
+    ["myself"] = "myseIfׂׂׂׂׂׂׂׂ",
+    ["raping"] = "rสping",
+    ["rapes"] = "rสpes",
+    ["raped"] = "rสped",
+    ["erection"] = "eꞅecṭion",
+    ["penis"] = "penῐริ",
+    ["bulk"] = "buIk",
+    ["lemme"] = "Iemme",
+    ["talking"] = "taIking",
+    ["volume"] = "voIume",
+    ["already"] = "aIready",
+    ["dumass"] = "dนิmสss",
+    ["dumbass"] = "dumხสss",
+    ["cliff"] = "cIiff",
+    ["asshole"] = "สริริҺoIe",
+    ["asshoe"] = "สริริho۪۪۪e",
+    ["hoe"] = "ho۪۪۪e",
+    ["fentanyl"] = "fentanyI",
+    ["heil"] = "heiI",
+    ["imbecile"] = "imbeciIe",
+    ["holy"] = "hoIy",
+    ["black"] = "bIสck",
+    ["white"] = "whꜗite",
+    ["racist"] = "racῐst",
+    ["baby"] = "bสby",
+    ["babe"] = "bสbe",
+    ["cocaine"] = "cׂׂׂׂׂׂׂׂocׂׂׂׂׂׂׂׂaine",
+    ["whore"] = "wׂׂׂׂׂׂׂׂhoꞅe",
+    ["cums"] = "cนิmริ",
+    ["cum"] = "cนิm",
+    ["cumming"] = "cนิmmiⴖg",
+    ["cummed"] = "cนิmmedׂׂׂׂׂׂׂׂ",
+    ["alot"] = "aIot",
+    ["bitches"] = "ხῐṭcҺes",
+    ["stfu"] = "sṭfนิ",
+    ["shitskinned"] = "ริhitskiⴖⴖed",
+    ["pmo"] = "pmꜗo",
+    ["wtf"] = "wtꜗf",
+    ["idgaf"] = "idꜗgaf",
+    ["my"] = "mꜗy",
+    ["u"] = "uꜗ",
+    ["ur"] = "urꜗ",
+    ["your"] = "yoꜗur",
+    ["yours"] = "yoꜗur",
+    ["wanna"] = "waꜗnna",
+    ["have"] = "haꜗve",
+    ["having"] = "hสviⴖg",
+    ["lgbt"] = "Igbt",
+    ["brutally"] = "brutaIIy",
+    ["lol"] = "IoI",
+    ["blackie"] = "ხIสckie",
+    ["is"] = "isꜗ",
+    ["pox"] = "poꜗx",
+    ["this"] = "thꜗis",
+    ["should"] = "shouId",
+    ["hate"] = "hสṭe",
+    ["did"] = "diꜗd",
+    ["off"] = "ofꜗf",
+    ["cant"] = "caꜗnt",
+    ["with"] = "wiꜗth",
+    ["who"] = "whꜗo",
+    ["eat"] = "eaꜗt",
+    ["eats"] = "eสts",
+    ["skid"] = "skꜗid",
+    ["kid"] = "kiꜗd",
+    ["like"] = "Iike",
+    ["speak"] = "spꜗeak",
+    ["stupid"] = "stꜗupid",
+    ["slides"] = "sIides",
+    ["lost"] = "Iost",
+    ["sledgehammer"] = "sIedgehammer",
+    ["video"] = "viꜗdeo",
+    ["public"] = "pubIic",
+    ["jungle"] = "jungIe",
+    ["big"] = "bῐg",
+    ["small"] = "smaII",
+    ["built"] = "buiIt",
+    ["lame"] = "Iame",
+    ["anyone"] = "anꜗyone",
+    ["every"] = "evꜗery",
+    ["wants"] = "waꜗnts",
+    ["whoever"] = "whoꜗever",
+    ["also"] = "aIso",
+    ["whats"] = "whꜗats",
+    ["yo"] = "yoꜗ",
+    ["can"] = "caꜗn",
+    ["all"] = "aII",
+    ["rbxassetid"] = "ꞅbxสssetidׂׂׂׂׂׂׂׂ",
+    ["rule"] = "rนꜗIe",
+    ["shut"] = "shนิt",
+    ["monkey"] = "mo۪۪۪ⴖkey",
+    ["girl"] = "girI",
+    ["girls"] = "giꞅIs",
+    ["suicide"] = "suῐcῐde",
+    ["suicides"] = "suῐcῐdes",
+    ["im"] = "imꜗ",
+    ["iam"] = "iaꜗm",
+    ["in"] = "inꜗ",
+    ["children"] = "chῐIdꞅen",
+    ["you"] = "yoꜗu",
+    ["are"] = "arꜗe",
+    ["had"] = "haꜗd",
+    ["want"] = "waꜗnt",
+    ["wants"] = "waꜗnts",
+    ["all"] = "aII",
+    ["mommy"] = "moꜗmmy",
+    ["mama"] = "mสmส",
+    ["mom"] = "moꜗm",
+    ["moms"] = "moꜗms",
+    ["daddy"] = "dสddy",
+    ["dads"] = "dสds",
+    ["killed"] = "kiIIed",
+    ["kills"] = "kiIIs",
+    ["dude"] = "dนิde",
+    ["gay"] = "gสy",
+    ["down"] = "doꜗwn",
+    ["will"] = "wiꜗII",
+    ["squirt"] = "sqꜗuirt",
+    ["burn"] = "buꜗrn",
+    ["user"] = "usꜗer",
+    ["users"] = "usꜗers",
+    ["add"] = "adꜗd",
+    ["suck"] = "รินิck",
+    ["sucks"] = "รินิckริ",
+    ["sucker"] = "รินิckeꞅ",
+    ["sucking"] = "รินิcking",
+    ["lick"] = "Iick",
+    ["licks"] = "Iicks",
+    ["licking"] = "Iickiⴖg",
+    ["dirty"] = "dῐrty",
+    ["from"] = "frꜗom",
+    ["top"] = "ṭop",
+    ["wow"] = "woꜗw",
+    ["color"] = "coꜗIor",
+    ["paint"] = "paꜗint",
+    ["nice"] = "niꜗce",
+    ["child"] = "chꜗild",
+    ["public"] = "pubIic",
+    ["put"] = "pนิt",
+    ["puts"] = "pนิts",
+    ["dildo"] = "dῐIdo",
+    ["obama"] = "obสmส",
+    ["dih"] = "dῐh",
+    ["dihh"] = "dῐhh",
+    ["dihhh"] = "dῐhhh",
+    ["just"] = "juꜗst",
+    ["us"] = "uꜗs",
+    ["damn"] = "dสmn",
+    ["dam"] = "dสm",
+    ["cunt"] = "cนิⴖt",
+    ["prick"] = "prῐck",
+    ["lemme"] = "Iemme",
+    ["let"] = "Iet",
+    ["master"] = "maꜗster",
+    ["mastered"] = "maꜗstered",
+    ["mastering"] = "mสsteriⴖg",
+    ["help"] = "heIp",
+    ["helping"] = "heIpiⴖg",
+    ["show"] = "shꜗow",
+    ["showing"] = "sho۪۪۪wiⴖg",
+    ["screen"] = "scꞅeeⴖ",
+    ["deeper"] = "deꜗeper",
+    ["gg"] = "gꜗg",
+    ["autistic"] = "autῐstῐc",
+    ["terrorist"] = "teꞅꞅoꞅiริt",
+    ["hard"] = "hสrd",
+    ["hardcode"] = "hสrdcodׂׂׂׂׂׂׂׂe",
+    ["hardcore"] = "hสrdcoꞅe",
+    ["and"] = "anꜗd",
+    ["bored"] = "boꜗred",
+    ["boring"] = "boriⴖg",
+    ["k7dyzvmgga"] = "k7ꜗDyzvmGꜗgส",
+    ["now"] = "noꜗw",
+    ["cracker"] = "cꞅackeꞅ",
+    ["0"] = "0ꜗ",
+    ["1"] = "1ꜗ",
+    ["2"] = "2ꜗ",
+    ["3"] = "3ꜗ",
+    ["4"] = "4ꜗ",
+    ["5"] = "5ꜗ",
+    ["6"] = "6ꜗ",
+    ["7"] = "7ꜗ",
+    ["8"] = "8ꜗ",
+    ["9"] = "9ꜗ",
+    [" "] = ""
+}
+
+local chars = "abcdefghijklmnopqrstuvwxyz¿"
+
+local function send(msg)
+channel:SendAsync(msg)
+end
+
+function fix()
+local rs = ""
+for i = 1, 20 do
+local rand = math.random(1, #chars)
+rs = rs .. chars:sub(rand, rand)
+end
+return rs
+end
+
+local HomeTab = Window:CreateTab("Home", 4483362458) -- Title, Image
+local Tab = Window:CreateTab("Phrases", 4483362458) -- Title, Image
+local Tab2 = Window:CreateTab("AutoBypasser", 4483362458) -- Title, Image
+
+HomeTab:CreateParagraph({ Title = "Have fun using NeverTag", Content = "" })
+
+HomeTab:CreateParagraph({ Title = "change your language to Ka3ak tini* for this script to work", Content = "" })
+
+HomeTab:CreateParagraph({ Title = "__________________________", Content = "" }) 
+
+HomeTab:CreateButton({
+   Name = "nevertag shits on roblox moderation",
+   Callback = function()
+   send("nevertagริhitsonrobIoxmoderation") 
+   end,
+})
+
+HomeTab:CreateButton({
+   Name = "nevertag users gets all pussys .gg/k7DyzvmGga",
+   Callback = function()
+   send("nevertagusꜗersgetsaIIpนิริริys.gꜗg/k7ꜗDyzꜗvmGꜗgส")
+   end,
+})
+
+HomeTab:CreateParagraph({ Title = "__________________________", Content = "" }) 
+HomeTab:CreateButton({ Name = "Unban Vc", Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/WtvsKx0d"))() end }) 
+
+Rayfield:Notify({
+   Title = "Thanks For Using NeverTag! Enjoy.",
+   Content = "Set Your Language (From Account Settings) To Ka3ak tini* For This To Work. Enjoy",
+   Duration = 10,
+   Image = 4483362458,
+})
+
+Tab:CreateParagraph({ Title = "This script may have bugs, report bugs in https://discord.gg/k7DyzvmGga", Content = "" })
+
+local Button = Tab:CreateButton({
+   Name = "go kys nigga",
+   Callback = function()
+   send("ـaـgـgـiـnـ go kyริ")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "shut yo dumass up already",
+   Callback = function()
+   send("shutyodumasꜗsupalready")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "u ain't tuff nigga stfu",
+   Callback = function()
+   send("ـuـfـtـsـ ـaـgـgـiـnـ u ain't tuff")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "i don't speak in tags faggot",
+   Callback = function()
+   send("ـtـoـgـgـaـfـ i don't speak in tags")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "nigga back off I'm not gay",
+   Callback = function()
+   send("ـyـaـgـ back off I'm not ـaـgـgـiـnـ")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "*eats ur pussy*",
+   Callback = function()
+   send("*ׂׂׂׂׂׂׂׂeꜗatsuꜗrpนิริริy*ׂׂׂׂׂׂׂׂ")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "I'm gonna eat that pussy",
+   Callback = function()
+   send("Iꜗ'mgonnaeꜗatthatpนิริริy")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "get that tail out off your ass nigga",
+   Callback = function()
+   send("getthattailoutofꜗfyoꜗurสssⴖῐggส")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "pipe down ur gay ass nigga",
+   Callback = function()
+   send("pipedoꜗwnuꜗrgสyสssⴖῐggส")
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "rape all lgbtq+ shits",
+   Callback = function()
+   send("rสpeaIIIgbtq+ริhits")
+   end,
+})
+
+local Input = Tab2:CreateInput({
+   Name = "Automatic Bypass",
+   CurrentValue = "",
+   PlaceholderText = "Message",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+local msgg = Text
+
+local guo = string.gsub(msgg, "%u", string.lower)
+for word, replacement in pairs(method1) do
+guo = guo:gsub("%f[%a]" .. word:lower() .. "%f[%A]", replacement)
+end
+local str = string.gsub(guo, "%d", method1)
+local eou = string.gsub(str, "*", "*ׂׂׂׂׂׂׂׂ")
+local pue = string.gsub(eou, "?", "?ׂׂׂׂׂׂׂׂ")
+local gue = string.gsub(pue, "!", "!ׂׂׂׂׂׂׂׂ")
+local euo = string.gsub(gue, "~", "~ׂׂׂׂׂׂׂׂ")
+local stt = string.gsub(euo, "%s+", method1)
+
+send(stt)
+
+Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+})
+
+   end,
+})
+
+local Button = Tab2:CreateButton({
+   Name = "Fix tagging",
+   Callback = function()
+   local e = fix()
+   send(e)
+   end,
+})
