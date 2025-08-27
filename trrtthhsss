@@ -1,20 +1,20 @@
 local game = game
-local FindFirstChildOfClass = game.FindFirstChildOfClass
+local Chat = game:GetService("Chat")
 local channel = game.TextChatService:WaitForChild("TextChannels"):WaitForChild("RBXGeneral")
 
 local Rayfield = loadstring(game:HttpGet('https://pastebin.com/raw/rhv71PZG'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "NeverTag.lol V1.30",
+   Name = "NeverTag.lol V1.50",
    Icon = 119132628394474, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
    LoadingTitle = "NeverTag.lol",
-   LoadingSubtitle = "get rid of tags, get NeverTag.",
+   LoadingSubtitle = "get rid of tags, NeverTag.",
    
 
    ToggleUIKeybind = "X", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
 
    DisableRayfieldPrompts = false,
-   DisableBuildWarnings = false, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
+   DisableBuildWarnings = true, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
 
    ConfigurationSaving = {
       Enabled = false,
@@ -24,38 +24,39 @@ local Window = Rayfield:CreateWindow({
 
    Discord = {
       Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
-      Invite = "hfa8wNsj", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
+      Invite = "f7pYfuuy", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
       RememberJoins = false -- Set this to false to make them join the discord every time they load it up
    },
 
-   KeySystem = false, -- Set this to true to use our key system
+   KeySystem = true, -- Set this to true to use our key system
    KeySettings = {
       Title = "NeverTag.lol",
       Subtitle = "Key System",
-      Note = "NeverTag Shows You How Being Freedom Feels When Chatting.", -- Use this to tell the user how to get a key
+      Note = "Join to get key discord.gg/f7pYfuuy", -- Use this to tell the user how to get a key
       FileName = "Login", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
       SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"Pizza"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Key = {"bestever"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
 
 local method1 = {
     ["fuck"] = "fมϲҟ",
+    ["fucks"] = "fมϲҟธ",
     ["fak"] = "fสҟ",
     ["fuckass"] = "fมϲҟสss",
     ["marijuana"] = "mสrเ่juสnส",
-    ["watchpeopledie"] = "wสtchpeopIedie",
+    ["watchpeopledie"] = "wสtchpeopIedเ่e",
     ["shit"] = "ธhit",
     ["shits"] = "ธhits",
     ["shitting"] = "ธhittiฑg",
     ["shitted"] = "ธhitted",
     ["bullshit"] = "ხuIIธhit",
-    ["pussies"] = "pมธธเ่eธ",
+    ["pussies"] = "puธธieธ",
     ["pedophiles"] = "pedophเ่Ieธ",
-    ["pedophile"] = "pedopҺเ่Ie",
+    ["pedophile"] = "pedophเ่Ie",
     ["zoophile"] = "zoophเ่Ie",
-    ["pussys"] = "pมธธys",
+    ["pussys"] = "puธธys",
     ["bullshitting"] = "ხuIIธhittiฑg",
     ["nigga"] = "ฑiggส",
     ["nigger"] = "ฑiggeꞅ",
@@ -66,16 +67,16 @@ local method1 = {
     ["porn"] = "porฑ",
     ["porno"] = "porฑo",
     ["pornography"] = "porฑogrสphy",
-    ["sex"] = "seӽ",
-    ["fuckers"] = "fมϲҟeꞅs",
+    ["sex"] = "ธex",
+    ["fuckers"] = "fมϲҟeꞅธ",
     ["fucker"] = "fมϲҟeꞅ",
     ["fucked"] = "fมϲҟed",
     ["fucklard"] = "fมϲҟIสrd",
     ["fuckie"] = "fมϲҟเ่e",
-    ["discord"] = "dเ่ธϲord",
+    ["discord"] = "dเ่ธϲoꞅd",
     ["niggas"] = "ฑiggสธ",
     ["niggers"] = "ฑiggeꞅธ",
-    ["sexy"] = "ธeӽy",
+    ["sexy"] = "ธexy",
     ["slave"] = "sIสve",
     ["rape"] = "rสpe",
     ["raper"] = "rสper",
@@ -87,9 +88,9 @@ local method1 = {
     ["instagram"] = "iฑsṭสgrสm",
     ["gay"] = "gสy",
     ["gays"] = "gสys",
-    ["cock"] = "ϲoϲҟ",
-    ["cocksucker"] = "ϲoϲkธมckeꞅ",
-    ["cocksucking"] = "ϲoϲkธมckiฑg",
+    ["cock"] = "ͼoͼҟ",
+    ["cocksucker"] = "ͼoͼҟธมckeꞅ",
+    ["cocksucking"] = "ͼoͼҟธมckiฑg",
     ["fucking"] = "fมϲҟiฑg",
     ["anal"] = "สnสI",
     ["boobs"] = "ხooხธ",
@@ -103,7 +104,7 @@ local method1 = {
     ["ass"] = "สss",
     ["fatass"] = "fสtสss",
     ["deadass"] = "deสdสss",
-    ["motherfucker"] = "mo۪۪۪tҺeꞅfมϲҟeꞅ",
+    ["motherfucker"] = "motherfมϲҟeꞅ",
     ["gf"] = "gfׂׂׂׂׂׂׂׂ",
     ["girlfriend"] = "giꞅIfrเ่end",
     ["bf"] = "bfׂׂׂׂׂׂׂׂ",
@@ -114,19 +115,19 @@ local method1 = {
     ["robux"] = "robuӽ",
     ["nazi"] = "ฑสzi", 
     ["adolf"] = "สdoIfׂׂ",
-    ["hitler"] = "ҺiṭIeꞅ",
-    ["bitch"] = "ხitϲh",
-    ["bitchs"] = "ხitϲhธ",
+    ["hitler"] = "hเ่tIeꞅ",
+    ["bitch"] = "ხเ่tϲh",
+    ["bitchs"] = "ხเ่tϲhธ",
     ["youtube"] = "yoมtมbe",
-    ["lmao"] = "Imꜗao",
+    ["lmao"] = "Imao",
     ["lmfao"] = "Imfสo",
     ["dick"] = "dเ่ϲҟ",
     ["fag"] = "fสg",
     ["fags"] = "fสgs",
     ["faggot"] = "ӻสggot",
-    ["faggots"] = "ӻสggots",
+    ["faggots"] = "ӻสggotธ",
     ["faggoted"] = "ӻสggoted",
-    ["pussy"] = "pมธธy",
+    ["pussy"] = "puธธy",
     ["retard"] = "ꞅetaꞅd",
     ["retards"] = "ꞅetaꞅdธ",
     ["retarded"] = "ꞅetสꞅded",
@@ -142,7 +143,7 @@ local method1 = {
     ["rapes"] = "rสpes",
     ["raped"] = "rสped",
     ["erection"] = "eꞅectเ่on",
-    ["penis"] = "peฑiธ",
+    ["penis"] = "peฑเ่ธ",
     ["bulk"] = "buIk",
     ["lemme"] = "Iemme",
     ["talking"] = "taIking",
@@ -160,7 +161,7 @@ local method1 = {
     ["holy"] = "hoIy",
     ["black"] = "ხIสϲҟ",
     ["white"] = "whเ่te",
-    ["racist"] = "raϲist",
+    ["racist"] = "ꞅสϲเ่ธt",
     ["baby"] = "bสby",
     ["babe"] = "bสbe",
     ["cocaine"] = "ϲoϲaiฑe",
@@ -170,7 +171,7 @@ local method1 = {
     ["cumming"] = "cมmmiฑg",
     ["cummed"] = "cมmmed",
     ["alot"] = "aIot",
-    ["bitches"] = "ხitϲheธ",
+    ["bitches"] = "ხเ่tϲheธ",
     ["stfu"] = "stfׂׂׂׂׂׂׂׂม",
     ["shitskinned"] = "ธhitskiฑฑed",
     ["pmo"] = "pmꜗo",
@@ -192,7 +193,7 @@ local method1 = {
     ["pox"] = "poӽ",
     ["this"] = "thเ่s",
     ["should"] = "shouId",
-    ["hate"] = "hสṭe",
+    ["hate"] = "hสτe",
     ["did"] = "dเ่d",
     ["off"] = "ofꜗf",
     ["cant"] = "cสnt",
@@ -230,8 +231,8 @@ local method1 = {
     ["monkey"] = "moฑҟey",
     ["girl"] = "giꞅI",
     ["girls"] = "giꞅIธ",
-    ["suicide"] = "suiϲide",
-    ["suicides"] = "suiϲideธ",
+    ["suicide"] = "suเ่ϲเ่de",
+    ["suicides"] = "suเ่ϲเ่deธ",
     ["im"] = "เ่m",
     ["iam"] = "iสm",
     ["in"] = "เ่n",
@@ -309,7 +310,7 @@ local method1 = {
     ["and"] = "สnd",
     ["bored"] = "boꞅed",
     ["boring"] = "boꞅiฑg",
-    ["k7dyzvmgga"] = "hfส8wNธj",
+    ["f7pYfuuy"] = "f7pYfมมy",
     ["now"] = "ฑow",
     ["cracker"] = "cꞅackeꞅ",
     ["her"] = "heꞅ",
@@ -366,7 +367,7 @@ local method1 = {
     ["post"] = "posṭ",
     ["bend"] = "beฑd",
     ["over"] = "oveꞅ",
-    ["exploiters"] = "expIoiṭeꞅs",
+    ["exploiters"] = "expIoiṭeꞅธ",
     ["exploit"] = "expIoiṭ",
     ["cheater"] = "cheaṭeꞅ",
     ["most"] = "mosṭ",
@@ -375,6 +376,27 @@ local method1 = {
     ["hang"] = "hสng",
     ["up"] = "มp",
     ["on"] = "oꜗn",
+    ["ah"] = "สh",
+    ["ahh"] = "สhh",
+    ["gtfo"] = "gṭfׂׂׂׂׂׂׂׂo",
+    ["trans"] = "tꞅanธ",
+    ["ashes"] = "aธheธ",
+    ["woman"] = "womสn",
+    ["come"] = "ͼׂׂׂׂׂׂׂׂome",
+    ["doxxing"] = "doӽӽiฑg",
+    ["someone"] = "ธomeoฑe",
+    ["years"] = "yeสꞅธ",
+    ["balls"] = "bสIIธ",
+    ["ball"] = "bสII",
+    ["finger"] = "fเ่ฑgeꞅ",
+    ["fem"] = "ӻem",
+    ["femboy"] = "ӻemხoy",
+    ["yeah"] = "yeสh",
+    ["diddy"] = "dเ่ddy",
+    ["tuff"] = "ṭuff",
+    ["back"] = "bสck",
+    ["get"] = "geṭ",
+    ["out"] = "ouṭ",
     ["0"] = "0ꜗ",
     ["1"] = "1ꜗ",
     ["2"] = "2ꜗ",
@@ -388,6 +410,7 @@ local method1 = {
     [" "] = ""
 }
 
+local char = "ـ"
 local chars = "abcdefghijklmn¿"
 
 local function send(msg)
@@ -403,6 +426,14 @@ end
 return rs
 end
 
+local function method2(msg)
+local r = ""
+for i = #msg, 1, -1 do
+r = r .. char .. msg:sub(i, i)
+end
+return r
+end
+
 local HomeTab = Window:CreateTab("Home", 4483362458) -- Title, Image
 local Tab = Window:CreateTab("Sentences", 4483362458) -- Title, Image
 local Tab2 = Window:CreateTab("AutoBypasser", 4483362458) -- Title, Image
@@ -412,20 +443,6 @@ HomeTab:CreateParagraph({ Title = "Have fun using NeverTag", Content = "" })
 HomeTab:CreateParagraph({ Title = "change your language to Ka3ak tini* for this script to work", Content = "" })
 
 HomeTab:CreateParagraph({ Title = "__________________________", Content = "" }) 
-
-HomeTab:CreateButton({
-   Name = "nevertag shits on roblox moderation",
-   Callback = function()
-   send("nevertagธhitsonrobIoxmoderation") 
-   end,
-})
-
-HomeTab:CreateButton({
-   Name = "nevertag users gets all pussys .gg/hfa8wNsj",
-   Callback = function()
-   send("nevertagusꜗersgetsaIIpมธธys.gꜗg/hfꜗa8wNsꜗj")
-   end,
-})
 
 HomeTab:CreateParagraph({ Title = "__________________________", Content = "" }) 
 HomeTab:CreateButton({ Name = "Unban Vc", Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/WtvsKx0d"))() end }) 
@@ -442,77 +459,216 @@ Tab:CreateParagraph({ Title = "This script may have bugs, report bugs in https:/
 local Button = Tab:CreateButton({
    Name = "go kys nigga",
    Callback = function()
-   send("ـaـgـgـiـnـ ـsـyـkـ go")
+   local bypassed = "gꜗokyธฑiggส"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
    end,
 })
 
 local Button = Tab:CreateButton({
    Name = "shut yo dumass up already",
    Callback = function()
-   send("shมtyꜗodมmสssupaIready")
+   local bypassed = "shมtyꜗodมmสssมpaIready"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
    end,
 })
 
 local Button = Tab:CreateButton({
    Name = "u ain't tuff nigga stfu",
    Callback = function()
-   send("ـuـfـtـsـ ـaـgـgـiـnـ u ain't tuff")
+   local bypassed = "มain'tṭuffฑiggสstfׂׂׂׂׂׂׂׂม"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
    end,
 })
 
 local Button = Tab:CreateButton({
    Name = "i don't speak in tags faggot",
    Callback = function()
-   send("ـtـoـgـgـaـfـ i don't speak in tags")
+   local bypassed = "idon'tspeสkเ่nṭagsӻสggot"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
    end,
 })
 
 local Button = Tab:CreateButton({
    Name = "nigga back off I'm not gay",
    Callback = function()
-   send("ـyـaـgـ back off I'm not ـaـgـgـiـnـ")
+   local bypassed = "ฑiggสbสckofꜗfเ่mnoṭgสy"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
    end,
 })
 
 local Button = Tab:CreateButton({
    Name = "*eats ur pussy*",
    Callback = function()
-   send("*ׂׂׂׂׂׂׂׂeสtsuꜗrpมธธy*ׂׂׂׂׂׂׂׂ")
+   local bypassed = "*ׂׂׂׂׂׂׂׂeสtธมrpuธธy"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
    end,
 })
 
 local Button = Tab:CreateButton({
    Name = "I'm gonna eat that pussy",
    Callback = function()
-   send("iꜗmgonꜗnaeꜗatthatpมธธy")
+   local bypassed = "เ่mgoฑฑaeสtthสtpuธธy"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
    end,
 })
 
 local Button = Tab:CreateButton({
    Name = "get that tail out off your ass",
    Callback = function()
-   send("getthattailoutofꜗfyoꜗurสss")
-   end,
-})
-
-local Button = Tab:CreateButton({
-   Name = "pipe down ur gay ass nigga",
-   Callback = function()
-   send("pipedoꜗwnuꜗrgสyสssฑiggส")
-   end,
-})
-
-local Button = Tab:CreateButton({
-   Name = "rape all lgbtq+ shits",
-   Callback = function()
-   send("rสpeaIIIgbtq+ธhits")
+   local bypassed = "geṭthสttailouṭofꜗfyoมrสss"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
    end,
 })
 
 local Button = Tab:CreateButton({
    Name = "go swallow a glock 17 nigga",
    Callback = function()
-   send("goswꜗaIIowaglock1ꜗ7ฑiggส")
+   local bypassed = "gꜗoswสIIowagIock1ꜗ7ฑiggส"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
    end,
 })
 
@@ -524,6 +680,7 @@ local Input = Tab2:CreateInput({
    Flag = "Input1",
    Callback = function(Text)
 local msgg = Text
+local istagged = nil
 
 local guo = string.gsub(msgg, "%u", string.lower)
 for word, replacement in pairs(method1) do
@@ -534,15 +691,89 @@ local eou = string.gsub(str, "*", "*ׂׂׂׂׂׂׂׂ")
 local euo = string.gsub(eou, "~", "~ׂׂׂׂׂׂׂׂ")
 local stt = string.gsub(euo, "%s+", method1)
 
-send(stt)
-
+local bypassedtxt=msgg
+local resut = Chat:FilterStringForBroadcast(bypassedtxt, game.Players.LocalPlayer)
+if resut:match(bypassedtxt) then
+istagged = false
+channel:SendAsync(resut)
 Rayfield:Notify({
     Title = "NeverTag.lol",
     Content = "Message succesfully bypassed.",
     Duration = 5, 
     Image = 4483362458
 })
+else
+istagged = true
+end
 
+local bypassedtext=stt
+local result = Chat:FilterStringForBroadcast(bypassedtext, game.Players.LocalPlayer)
+if istagged == true then
+if result:match(bypassedtext) then
+channel:SendAsync(result)
+Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+})
+else
+Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5,
+    Image = 4483362458
+})
+end
+end
+   end,
+})
+
+local Input = Tab2:CreateInput({
+   Name = "Automatic Bypass 2",
+   CurrentValue = "",
+   PlaceholderText = "Message",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+local msgg = Text
+local istagged = nil
+
+local bypassedtxt=msgg
+local resut = Chat:FilterStringForBroadcast(bypassedtxt, game.Players.LocalPlayer)
+if resut:match(bypassedtxt) then
+istagged = false
+channel:SendAsync(resut)
+Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+})
+else
+istagged = true
+end
+
+local bypassedtext=method2(msgg)
+local result = Chat:FilterStringForBroadcast(bypassedtext, game.Players.LocalPlayer)
+if istagged == true then
+if result:match(bypassedtext) then
+channel:SendAsync(result)
+Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+})
+else
+Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message got tagged :(",
+    Duration = 5,
+    Image = 4483362458
+})
+end
+end
    end,
 })
 
@@ -552,4 +783,4 @@ local Button = Tab2:CreateButton({
    local e = fix()
    send(e)
    end,
-});
+})
