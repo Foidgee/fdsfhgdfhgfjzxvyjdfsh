@@ -442,9 +442,16 @@ HomeTab:CreateParagraph({ Title = "Have fun using NeverTag", Content = "" })
 
 HomeTab:CreateParagraph({ Title = "change your language to Ka3ak tini* for this script to work", Content = "" })
 
-HomeTab:CreateParagraph({ Title = "__________________________", Content = "" }) 
+
 
 HomeTab:CreateParagraph({ Title = "__________________________", Content = "" }) 
+local Button = HomeTab:CreateButton({
+   Name = "Fix tagging",
+   Callback = function()
+   local e = fix()
+   send(e)
+   end,
+})
 HomeTab:CreateButton({ Name = "Unban Vc", Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/WtvsKx0d"))() end }) 
 
 Rayfield:Notify({
@@ -777,10 +784,3 @@ end
    end,
 })
 
-local Button = Tab2:CreateButton({
-   Name = "Fix tagging",
-   Callback = function()
-   local e = fix()
-   send(e)
-   end,
-})
