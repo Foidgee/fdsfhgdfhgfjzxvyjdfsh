@@ -19,13 +19,13 @@ local Window = Rayfield:CreateWindow({
    ConfigurationSaving = {
       Enabled = false,
       FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "NeverTag"
+      FileName = "NeverTag Recode"
    },
 
    Discord = {
       Enabled = true, -- Prompt the user to join your Discord server if their executor supports it
       Invite = "f7pYfuuy", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ ABCD would be ABCD
-      RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+      RememberJoins = true -- Set this to true to make them join the discord every time they load it up
    },
 
    KeySystem = true, -- Set this to true to use our key system
@@ -374,7 +374,9 @@ local method1 = {
     ["important"] = "impoꞅṭanṭ",
     ["thing"] = "ṭhing",
     ["hang"] = "hสng",
-    ["up"] = "มp",
+    ["up"] = "มp", 
+    ["nut"] = "nมt",
+    ["nuts"] = "nมtธ",
     ["on"] = "oꜗn",
     ["ah"] = "สh",
     ["ahh"] = "สhh",
@@ -440,9 +442,9 @@ local Tab2 = Window:CreateTab("AutoBypasser", 4483362458) -- Title, Image
 
 HomeTab:CreateParagraph({ Title = "Have fun using NeverTag", Content = "" })
 
-HomeTab:CreateParagraph({ Title = "change your language to Ka3ak tini* for this script to work", Content = "" })
+HomeTab:CreateParagraph({ Title = "change your language to Қазақ тілі for this script to work", Content = "" })
 
-
+HomeTab:CreateParagraph({ Title = "This script may have bugs, report bugs in https://discord.gg/hfa8wNsj", Content = "" })
 
 HomeTab:CreateParagraph({ Title = "__________________________", Content = "" }) 
 local Button = HomeTab:CreateButton({
@@ -461,7 +463,7 @@ Rayfield:Notify({
    Image = 4483362458,
 })
 
-Tab:CreateParagraph({ Title = "This script may have bugs, report bugs in https://discord.gg/hfa8wNsj", Content = "" })
+
 
 local Button = Tab:CreateButton({
    Name = "go kys nigga",
@@ -479,7 +481,7 @@ local Button = Tab:CreateButton({
     else
    Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5, 
     Image = 4483362458
     })
@@ -503,7 +505,7 @@ local Button = Tab:CreateButton({
     else
    Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5, 
     Image = 4483362458
     })
@@ -527,7 +529,7 @@ local Button = Tab:CreateButton({
     else
    Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5, 
     Image = 4483362458
     })
@@ -551,7 +553,7 @@ local Button = Tab:CreateButton({
     else
    Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5, 
     Image = 4483362458
     })
@@ -575,7 +577,7 @@ local Button = Tab:CreateButton({
     else
    Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5, 
     Image = 4483362458
     })
@@ -599,7 +601,7 @@ local Button = Tab:CreateButton({
     else
    Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5, 
     Image = 4483362458
     })
@@ -623,7 +625,7 @@ local Button = Tab:CreateButton({
     else
    Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5, 
     Image = 4483362458
     })
@@ -647,7 +649,7 @@ local Button = Tab:CreateButton({
     else
    Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5, 
     Image = 4483362458
     })
@@ -671,7 +673,7 @@ local Button = Tab:CreateButton({
     else
    Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5, 
     Image = 4483362458
     })
@@ -679,8 +681,132 @@ local Button = Tab:CreateButton({
    end,
 })
 
+
+
+local Button = Tab:CreateButton({
+   Name = "shoot me nigga idc",
+   Callback = function()
+   local bypassed = "shootmeฑiggสidc"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message was tagged, try typing something similar.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "nigger i know u want kfc and watermelon",
+   Callback = function()
+   local bypassed = "ฑiggeriknowuwantkfcandwatermelon"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message was tagged, try typing something similar.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
+   end,
+})
+
+
+local Button = Tab:CreateButton({ 
+   Name = "burning faggots live on camera challenge part 2!",
+   Callback = function()
+   local bypassed = "burningӻสggotธliveoncamerachallengepart2!"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message was tagged, try typing something similar.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
+   end,
+})
+
+local Button = Tab:CreateButton({ 
+   Name = "*busts a nut*",
+   Callback = function()
+   local bypassed = "*bมstsanมt*"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message was tagged, try typing something similar.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
+   end,
+})
+
+local Button = Tab:CreateButton({ 
+   Name = "shoot a lgtbq parade and burn all the faggots",
+   Callback = function()
+   local bypassed = "shootalgtbqparadeandbมrnalltheӻสggotธ"
+   local result = Chat:FilterStringForBroadcast(bypassed, game.Players.LocalPlayer)
+   if result:match(bypassed) then
+   channel:SendAsync(result)
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message succesfully bypassed.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+    else
+   Rayfield:Notify({
+    Title = "NeverTag.lol",
+    Content = "Message was tagged, try typing something similar.",
+    Duration = 5, 
+    Image = 4483362458
+    })
+   end
+   end,
+})
+
+
 local Input = Tab2:CreateInput({
-   Name = "Automatic Bypass",
+   Name = "Unicode Method (80% success rate)",
    CurrentValue = "",
    PlaceholderText = "Message",
    RemoveTextAfterFocusLost = false,
@@ -727,7 +853,7 @@ Rayfield:Notify({
 else
 Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5,
     Image = 4483362458
 })
@@ -737,7 +863,7 @@ end
 })
 
 local Input = Tab2:CreateInput({
-   Name = "Automatic Bypass 2",
+   Name = "Minus Method (100% success rate)",
    CurrentValue = "",
    PlaceholderText = "Message",
    RemoveTextAfterFocusLost = false,
@@ -775,7 +901,7 @@ Rayfield:Notify({
 else
 Rayfield:Notify({
     Title = "NeverTag.lol",
-    Content = "Message got tagged :(",
+    Content = "Message was tagged, try typing something similar.",
     Duration = 5,
     Image = 4483362458
 })
@@ -783,4 +909,3 @@ end
 end
    end,
 })
-
